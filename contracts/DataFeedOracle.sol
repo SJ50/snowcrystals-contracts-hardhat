@@ -12,7 +12,7 @@ import "../interfaces/IERC20Metadata.sol";
 **/
 contract DataFeedOracle {
     using SafeMath for uint256;
-    IStdReference ref;
+    IStdReference private immutable ref;
 
     uint256 public price;
     uint256[] public pricesArr;
@@ -21,19 +21,17 @@ contract DataFeedOracle {
         ref = _ref;
     }
 
-    function consult(address _token, uint256 _amountIn)
-        external
-        pure
-        returns (uint144 amountOut)
-    {
+    function consult(
+        address, /* _token */
+        uint256 /* _amountIn */
+    ) external pure returns (uint144 amountOut) {
         return 1e18;
     }
 
-    function twap(address _token, uint256 _amountIn)
-        external
-        pure
-        returns (uint144 _amountOut)
-    {
+    function twap(
+        address, /* _token */
+        uint256 /* _amountIn */
+    ) external pure returns (uint144 _amountOut) {
         return 1e18;
     }
 

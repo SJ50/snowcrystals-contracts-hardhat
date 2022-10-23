@@ -30,8 +30,7 @@ contract ShareTokenRewardPool {
         bool isStarted; // if lastRewardTime has passed
     }
 
-    IERC20 public glcr;
-    IERC20 public sBond;
+    IERC20 public immutable glcr;
 
     // Info of each pool.
     PoolInfo[] public poolInfo;
@@ -43,13 +42,13 @@ contract ShareTokenRewardPool {
     uint256 public totalAllocPoint = 0;
 
     // The time when glcr mining starts.
-    uint256 public poolStartTime;
+    uint256 public immutable poolStartTime;
 
     // The time when glcr mining ends.
-    uint256 public poolEndTime;
+    uint256 public immutable poolEndTime;
 
-    uint256 public glcrPerSecond;
-    uint256 public runningTime = 52 weeks;
+    uint256 public immutable glcrPerSecond;
+    uint256 public constant RUNNING_TIME = 52 weeks;
     uint256 public constant TOTAL_REWARDS = 21500 ether;
 
     bool enableTaxes = true;
@@ -74,18 +73,16 @@ contract ShareTokenRewardPool {
     constructor(
         address _glcr,
         address _daoFund,
-        uint256 _poolStartTime,
-        address _sBond
+        uint256 _poolStartTime
     ) public {
         require(block.timestamp < _poolStartTime, "late");
         require(_glcr != address(0), "_glcr");
         require(_daoFund != address(0), "_daoFund");
         glcr = IERC20(_glcr);
-        sBond = IERC20(_sBond);
         daoFund = _daoFund;
         glcrPerSecond = TOTAL_REWARDS.div(365).div(24).div(60).div(60);
         poolStartTime = _poolStartTime;
-        poolEndTime = poolStartTime + runningTime;
+        poolEndTime = _poolStartTime + RUNNING_TIME;
         operator = msg.sender;
     }
 
@@ -398,7 +395,7 @@ contract ShareTokenRewardPool {
         address to
     ) external onlyOperator {
         if (block.timestamp < poolEndTime + 90 days) {
-            // do not allow to drain core token (glcr or lps) if less than 30 days after pool ends
+            // do not allow to drain core token (glcr or lps) if less than 90 days after pool ends
             require(IERC20(_token) != glcr, "glcr");
             uint256 length = poolInfo.length;
             for (uint256 pid = 0; pid < length; ++pid) {

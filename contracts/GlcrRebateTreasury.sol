@@ -33,12 +33,6 @@ contract GlcrRebateTreasury is Ownable {
     mapping(address => VestingSchedule) public vesting;
 
     uint256 public discount; // 100000 for 10% discount or 1.1
-    bool public staticPremiumEnabled = true;
-
-    uint256 public bondThreshold = 20 * 1e4;
-    uint256 public bondFactor = 80 * 1e4;
-    uint256 public secondaryThreshold = 70 * 1e4;
-    uint256 public secondaryFactor = 15 * 1e4;
 
     uint256 public bondVesting = 1 days;
     uint256 public totalVested = 0;
@@ -176,22 +170,12 @@ contract GlcrRebateTreasury is Ownable {
 
     // Set bond pricing parameters
 
-    function setBondParameters(
-        uint256 _primaryThreshold,
-        uint256 _primaryFactor,
-        uint256 _secondThreshold,
-        uint256 _secondFactor,
-        uint256 _vestingPeriod,
-        uint256 _discount,
-        bool _staticPremiumEnabled
-    ) external onlyOwner {
-        bondThreshold = _primaryThreshold;
-        bondFactor = _primaryFactor;
-        secondaryThreshold = _secondThreshold;
-        secondaryFactor = _secondFactor;
+    function setBondParameters(uint256 _vestingPeriod, uint256 _discount)
+        external
+        onlyOwner
+    {
         bondVesting = _vestingPeriod;
         discount = _discount;
-        staticPremiumEnabled = _staticPremiumEnabled;
     }
 
     // Redeem assets for buyback

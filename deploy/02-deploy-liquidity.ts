@@ -14,19 +14,20 @@ const deployLiquidity: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const USDC = await ethers.getContractAt(
-    IUsdc,
-    networkConfig[network.name].usdc!
-  );
-  const UniswapV2Router = await ethers.getContractAt(
-    IUniswapV2Router,
-    networkConfig[network.name].router!
-  );
-  const UniswapV2Factory = await ethers.getContractAt(
-    IUniswapV2Factory,
-    UniswapV2Router.factory()
-  );
-  console.log(UniswapV2Router.WETH());
+  if (!developmentChains.includes(network.name)) {
+    const USDC = await ethers.getContractAt(
+      IUsdc,
+      networkConfig[network.name].usdc!
+    );
+    const UniswapV2Router = await ethers.getContractAt(
+      IUniswapV2Router,
+      networkConfig[network.name].router!
+    );
+    const UniswapV2Factory = await ethers.getContractAt(
+      IUniswapV2Factory,
+      UniswapV2Router.factory()
+    );
+  }
 };
 export default deployLiquidity;
 deployLiquidity.tags = ["all", "liquidity"];

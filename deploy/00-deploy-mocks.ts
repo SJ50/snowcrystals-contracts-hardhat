@@ -9,6 +9,7 @@ const deployMocks: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
+  log("----------------------------------------------------");
   // If we are on a local development network, we need to deploy mocks!
   if (developmentChains.includes(network.name)) {
     log("Local network detected! Deploying mocks...");
@@ -17,15 +18,40 @@ const deployMocks: DeployFunction = async function (
       from: deployer,
       log: true,
     });
+    await deploy("Mock WBTC", {
+      contract: "MockWbtc",
+      from: deployer,
+      log: true,
+    });
+    await deploy("Mock WCRO", {
+      contract: "MockWcro",
+      from: deployer,
+      log: true,
+    });
+    await deploy("Mock Dai", {
+      contract: "MockDai",
+      from: deployer,
+      log: true,
+    });
+    await deploy("Mock WETH", {
+      contract: "MockWeth",
+      from: deployer,
+      log: true,
+    });
+    await deploy("Mock USDT", {
+      contract: "MockUsdt",
+      from: deployer,
+      log: true,
+    });
     log("Mocks Deployed!");
-    log("----------------------------------");
+    log("----------------------------------------------------");
     log(
       "You are deploying to a local network, you'll need a local network running to interact"
     );
     log(
       "Please run `yarn hardhat console` to interact with the deployed smart contracts!"
     );
-    log("----------------------------------");
+    log("----------------------------------------------------");
   }
 };
 export default deployMocks;

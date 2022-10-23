@@ -102,6 +102,11 @@ const config: HardhatUserConfig = {
       },
     ],
   },
+  paths: {
+    deploy: "deploy",
+    deployments: "deployments",
+    imports: "imports",
+  },
 };
 
 export default config;

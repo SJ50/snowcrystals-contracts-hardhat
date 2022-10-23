@@ -18,12 +18,12 @@ contract MainTokenOracle is Epoch {
     using SafeMath for uint144;
 
     /* ========== STATE VARIABLES ========== */
-    address public dollar;
+    address public immutable snow;
     uint144 public constant DECIMALS_MULTIPLER = 10**12; // USDC Decimals = 6
     // uniswap
-    address public token0;
-    address public token1;
-    IUniswapV2Pair public pair;
+    address public immutable token0;
+    address public immutable token1;
+    IUniswapV2Pair public immutable pair;
 
     // oracle
     uint32 public blockTimestampLast;
@@ -38,17 +38,17 @@ contract MainTokenOracle is Epoch {
         IUniswapV2Pair _pair,
         uint256 _period,
         uint256 _startTime,
-        address _dollar
+        address _snow
     ) public Epoch(_period, _startTime, 0) {
-        dollar = address(_dollar);
+        snow = address(_snow);
         pair = _pair;
-        token0 = pair.token0();
-        token1 = pair.token1();
-        price0CumulativeLast = pair.price0CumulativeLast(); // fetch the current accumulated price value (1 / 0)
-        price1CumulativeLast = pair.price1CumulativeLast(); // fetch the current accumulated price value (0 / 1)
+        token0 = _pair.token0();
+        token1 = _pair.token1();
+        price0CumulativeLast = _pair.price0CumulativeLast(); // fetch the current accumulated price value (1 / 0)
+        price1CumulativeLast = _pair.price1CumulativeLast(); // fetch the current accumulated price value (0 / 1)
         uint112 reserve0;
         uint112 reserve1;
-        (reserve0, reserve1, blockTimestampLast) = pair.getReserves();
+        (reserve0, reserve1, blockTimestampLast) = _pair.getReserves();
         require(reserve0 != 0 && reserve1 != 0, "Oracle: NO_RESERVES"); // ensure that there's liquidity in the pair
     }
 
@@ -96,7 +96,7 @@ contract MainTokenOracle is Epoch {
             require(_token == token1, "Oracle: INVALID_TOKEN");
             amountOut = price1Average.mul(_amountIn).decode144();
         }
-        if (_token == dollar) {
+        if (_token == snow) {
             amountOut = uint144(amountOut.mul(DECIMALS_MULTIPLER));
         }
     }
@@ -131,7 +131,7 @@ contract MainTokenOracle is Epoch {
                 .mul(_amountIn)
                 .decode144();
         }
-        if (_token == dollar) {
+        if (_token == snow) {
             _amountOut = uint144(_amountOut.mul(DECIMALS_MULTIPLER));
         }
     }
