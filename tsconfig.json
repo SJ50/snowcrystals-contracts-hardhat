@@ -10,6 +10,14 @@
     "skipLibCheck": true,
     "outDir": "dist"
   },
-  "include": ["./scripts", "./test", "./tasks", "./deploy", "./interfaces"],
-  "files": ["./hardhat.config.ts", "./interfaces/*.json"]
+  "include": [
+    "./scripts",
+    "./test",
+    "./tasks",
+    "./deploy",
+    "./interfaces",
+    "./utils",
+    "./typechain-types"
+  ],
+  "files": ["./hardhat.config.ts"]
 }

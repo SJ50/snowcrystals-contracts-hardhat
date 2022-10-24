@@ -6,10 +6,10 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 
 import "./access/Operator.sol";
-import "../interfaces/IOracle.sol";
-import "../interfaces/IUniswapV2Router.sol";
-import "../interfaces/IERC20Taxable.sol";
-import "../interfaces/IBonusRewards.sol";
+import "./interfaces/IOracle.sol";
+import "./interfaces/IUniswapV2Router.sol";
+import "./interfaces/IERC20Taxable.sol";
+import "./interfaces/IBonusRewards.sol";
 
 contract TaxOffice is Operator {
     using SafeMath for uint256;

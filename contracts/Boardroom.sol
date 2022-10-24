@@ -10,8 +10,8 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 import "./utils/ShareWrapper.sol";
 import "./utils/ContractGuard.sol";
-import "../interfaces/IERC20Taxable.sol";
-import "../interfaces/ITreasury.sol";
+import "./interfaces/IERC20Taxable.sol";
+import "./interfaces/ITreasury.sol";
 
 contract Boardroom is ShareWrapper, ContractGuard, ReentrancyGuard {
     using SafeERC20 for IERC20;

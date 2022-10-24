@@ -10,10 +10,10 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "./access/Operator.sol";
 import "./utils/ContractGuard.sol";
 
-import "../interfaces/IOracle.sol";
-import "../interfaces/IBoardroom.sol";
-import "../interfaces/IERC20Taxable.sol";
-import "../interfaces/ITaxOffice.sol";
+import "./interfaces/IOracle.sol";
+import "./interfaces/IBoardroom.sol";
+import "./interfaces/IERC20Taxable.sol";
+import "./interfaces/ITaxOffice.sol";
 
 /*
     https://snowcrystals.finance

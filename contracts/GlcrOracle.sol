@@ -8,17 +8,17 @@ import "./lib/Babylonian.sol";
 import "./lib/FixedPoint.sol";
 import "./lib/UniswapV2OracleLibrary.sol";
 import "./utils/Epoch.sol";
-import "../interfaces/lib/IUniswapV2Pair.sol";
+import "./interfaces/lib/IUniswapV2Pair.sol";
 
 // fixed window oracle that recomputes the average price for the entire period once every period
 // note that the price average is only guaranteed to be over at least 1 period, but may be over a longer period
-contract MainTokenOracle is Epoch {
+contract GlcrOracle is Epoch {
     using FixedPoint for *;
     using SafeMath for uint256;
     using SafeMath for uint144;
 
     /* ========== STATE VARIABLES ========== */
-    address public immutable snow;
+    address public immutable glcr;
     uint144 public constant DECIMALS_MULTIPLER = 10**12; // USDC Decimals = 6
     // uniswap
     address public immutable token0;
@@ -38,9 +38,9 @@ contract MainTokenOracle is Epoch {
         IUniswapV2Pair _pair,
         uint256 _period,
         uint256 _startTime,
-        address _snow
+        address _glcr
     ) public Epoch(_period, _startTime, 0) {
-        snow = address(_snow);
+        glcr = address(_glcr);
         pair = _pair;
         token0 = _pair.token0();
         token1 = _pair.token1();
@@ -96,7 +96,7 @@ contract MainTokenOracle is Epoch {
             require(_token == token1, "Oracle: INVALID_TOKEN");
             amountOut = price1Average.mul(_amountIn).decode144();
         }
-        if (_token == snow) {
+        if (_token == glcr) {
             amountOut = uint144(amountOut.mul(DECIMALS_MULTIPLER));
         }
     }
@@ -131,7 +131,7 @@ contract MainTokenOracle is Epoch {
                 .mul(_amountIn)
                 .decode144();
         }
-        if (_token == snow) {
+        if (_token == glcr) {
             _amountOut = uint144(_amountOut.mul(DECIMALS_MULTIPLER));
         }
     }

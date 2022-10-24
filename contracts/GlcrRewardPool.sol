@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 
 // Note that this pool has no minter key of glcr (rewards).
 // Instead, the governance will call glcr distributeReward method and send reward to this pool at the beginning.
-contract ShareTokenRewardPool {
+contract GlcrRewardPool {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 

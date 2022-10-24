@@ -11,8 +11,9 @@ import "@nomiclabs/hardhat-etherscan";
 import "@cronos-labs/hardhat-cronoscan";
 import "hardhat-deploy";
 
-const CRONOSCAN_API_KEY = process.env.CRONOSCAN_API_KEY || "";
-const CRONOSCAN_TESTNET_API_KEY = process.env.CRONOSCAN_TESTNET_API_KEY || "";
+const CRONOSCAN_API_KEY: string = process.env.CRONOSCAN_API_KEY!;
+const CRONOSCAN_TESTNET_API_KEY: string =
+  process.env.CRONOSCAN_TESTNET_API_KEY!;
 const DEPLOYER: string =
   item
     .get("Metamask")
@@ -56,13 +57,9 @@ const config: HardhatUserConfig = {
     },
     dao: {
       default: 1,
-      cronosTesnet: "0xeDc5E564811b96Ec8ca2336895C66b3B88F9ef66",
-      cronos: "",
     },
     dev: {
       default: 2,
-      cronosTesnet: "0x8680492A2587F3Eb03ca0468F9695A6D21742CfC",
-      cronos: "",
     },
   },
   etherscan: {

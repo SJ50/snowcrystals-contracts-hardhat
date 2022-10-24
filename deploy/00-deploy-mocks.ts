@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { networkConfig, developmentChains } from "../helper-hardhat-config";
+import { mocksDeploymentChains } from "../helper-hardhat-config";
 
 const deployMocks: DeployFunction = async function (
   hre: HardhatRuntimeEnvironment
@@ -9,9 +9,10 @@ const deployMocks: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  log("----------------------------------------------------");
   // If we are on a local development network, we need to deploy mocks!
-  if (developmentChains.includes(network.name)) {
+  if (mocksDeploymentChains.includes(network.name)) {
+    log("");
+    log("----------------------------------------------------");
     log("Local network detected! Deploying mocks...");
     await deploy("Mock USDC", {
       contract: "MockUsdc",

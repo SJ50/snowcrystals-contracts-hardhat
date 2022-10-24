@@ -12,7 +12,7 @@ pragma solidity ^0.6.0;
     https://snowcrystals.finance
 */
 
-contract GlacrNode {
+contract GlcrNode {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
 

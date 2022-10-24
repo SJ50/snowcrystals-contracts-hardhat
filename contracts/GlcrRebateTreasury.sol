@@ -4,9 +4,9 @@ pragma solidity ^0.8.7;
 import "@openzeppelin_v4.7.3/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import "@openzeppelin_v4.7.3/contracts/access/Ownable.sol";
 
-import "../interfaces/IOracle8.sol";
-import "../interfaces/ITreasury8.sol";
-import "../interfaces/lib/IUniswapV2Pair8.sol";
+import "./interfaces/IOracle8.sol";
+import "./interfaces/ITreasury8.sol";
+import "./interfaces/lib/IUniswapV2Pair8.sol";
 
 contract GlcrRebateTreasury is Ownable {
     struct Asset {
