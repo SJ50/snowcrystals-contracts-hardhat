@@ -45,7 +45,7 @@ const addLiquidity = async (
 
   if (getPair === "0x0000000000000000000000000000000000000000") {
     const approveTokenATransactionResponse = await tokenA.approve(
-      networkConfig[network.name].router,
+      networkConfig[network.name].router!,
       amountADesired
     );
     await approveTokenATransactionResponse.wait(1);
