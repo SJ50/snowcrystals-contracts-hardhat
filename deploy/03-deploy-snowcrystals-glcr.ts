@@ -1,7 +1,7 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import verify from "../utils/verify";
-import utcSnowCrystalsStartTimeEpoch from "../utils/startTime";
+import { glcrStartTime } from "../utils/startTime";
 import { networkConfig } from "../helper-hardhat-config";
 
 const snowCrystalsGlcr: DeployFunction = async function (
@@ -14,16 +14,6 @@ const snowCrystalsGlcr: DeployFunction = async function (
   const sharetoken_name = "snowcrystals.finance SHARE";
   const sharetoken_symbol = "GLCR";
 
-  const ONE_DAYS_IN_SECS = 24 * 60 * 60;
-  let glcrStartTime;
-  if (network.name == "cronosTestnet") {
-    glcrStartTime =
-      Number(await utcSnowCrystalsStartTimeEpoch(network.name)) +
-      ONE_DAYS_IN_SECS;
-  } else {
-    glcrStartTime = Number(await utcSnowCrystalsStartTimeEpoch(network.name));
-  }
-
   log();
   log("----------------------------------------------------");
   log("Deploying $GLCR and waiting for confirmations...");
@@ -33,7 +23,7 @@ const snowCrystalsGlcr: DeployFunction = async function (
     args: [
       sharetoken_name,
       sharetoken_symbol,
-      glcrStartTime,
+      await glcrStartTime(network.name),
       networkConfig[network.name].dao,
       networkConfig[network.name].dev,
     ],
@@ -48,7 +38,7 @@ const snowCrystalsGlcr: DeployFunction = async function (
     await verify(glcr.address, [
       sharetoken_name,
       sharetoken_symbol,
-      glcrStartTime,
+      await glcrStartTime(network.name),
       networkConfig[network.name].dao,
       networkConfig[network.name].dev,
     ]);

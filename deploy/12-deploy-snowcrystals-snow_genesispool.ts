@@ -2,7 +2,7 @@ import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { Snow, IUsdc } from "../typechain-types";
 import verify from "../utils/verify";
-import utcSnowCrystalsStartTimeEpoch from "../utils/startTime";
+import { glcrStartTime } from "../utils/startTime";
 import { networkConfig, mocksDeploymentChains } from "../helper-hardhat-config";
 
 const snowCrystalsSnowGenesisRewardPool: DeployFunction = async function (
@@ -12,16 +12,7 @@ const snowCrystalsSnowGenesisRewardPool: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const ONE_DAYS_IN_SECS = 24 * 60 * 60;
-  let glcrStartTime;
-  if (network.name == "cronosTestnet") {
-    glcrStartTime =
-      Number(await utcSnowCrystalsStartTimeEpoch(network.name)) +
-      ONE_DAYS_IN_SECS;
-  } else {
-    glcrStartTime = Number(await utcSnowCrystalsStartTimeEpoch(network.name));
-  }
-  const snowGenesisRewardPoolStartTime = glcrStartTime;
+  const snowGenesisRewardPoolStartTime = await glcrStartTime(network.name);
 
   let USDC: IUsdc;
   if (mocksDeploymentChains.includes(network.name)) {

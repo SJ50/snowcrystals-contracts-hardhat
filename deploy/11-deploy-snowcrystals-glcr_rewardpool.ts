@@ -2,7 +2,7 @@ import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { Glcr } from "../typechain-types";
 import verify from "../utils/verify";
-import utcSnowCrystalsStartTimeEpoch from "../utils/startTime";
+import { glcrStartTime } from "../utils/startTime";
 import { networkConfig } from "../helper-hardhat-config";
 
 const snowCrystalsGlcrRewardPool: DeployFunction = async function (
@@ -12,16 +12,7 @@ const snowCrystalsGlcrRewardPool: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const ONE_DAYS_IN_SECS = 24 * 60 * 60;
-  let glcrStartTime;
-  if (network.name == "cronosTestnet") {
-    glcrStartTime =
-      Number(await utcSnowCrystalsStartTimeEpoch(network.name)) +
-      ONE_DAYS_IN_SECS;
-  } else {
-    glcrStartTime = Number(await utcSnowCrystalsStartTimeEpoch(network.name));
-  }
-  const glcrRewardPoolStartTime = glcrStartTime;
+  const glcrRewardPoolStartTime = await glcrStartTime(network.name);
 
   const GLCR: Glcr = await ethers.getContract("Glcr", deployer);
 

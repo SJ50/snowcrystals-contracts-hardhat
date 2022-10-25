@@ -2,7 +2,7 @@ import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { IUsdc, Glcr } from "../typechain-types";
 import verify from "../utils/verify";
-import utcSnowCrystalsStartTimeEpoch from "../utils/startTime";
+import { glcrStartTime } from "../utils/startTime";
 import addLiqudity from "../utils/addLiquidity";
 import { networkConfig, mocksDeploymentChains } from "../helper-hardhat-config";
 
@@ -14,15 +14,9 @@ const snowCrystalsGlcrNode: DeployFunction = async function (
   const { deployer } = await getNamedAccounts();
 
   const ONE_DAYS_IN_SECS = 24 * 60 * 60;
-  let glcrStartTime;
-  if (network.name == "cronosTestnet") {
-    glcrStartTime =
-      Number(await utcSnowCrystalsStartTimeEpoch(network.name)) +
-      ONE_DAYS_IN_SECS;
-  } else {
-    glcrStartTime = Number(await utcSnowCrystalsStartTimeEpoch(network.name));
-  }
-  const nodeStartTime = glcrStartTime + 9 * ONE_DAYS_IN_SECS;
+
+  const nodeStartTime =
+    (await glcrStartTime(network.name)) + 9 * ONE_DAYS_IN_SECS;
 
   let USDC: IUsdc;
   if (mocksDeploymentChains.includes(network.name)) {
