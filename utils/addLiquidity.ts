@@ -1,16 +1,8 @@
-import { getNamedAccounts, ethers, network, run } from "hardhat";
-import { networkConfig, developmentChains } from "../helper-hardhat-config";
-// import * as UniswapV2Router from "../interfaces/router_abi.json";
-import IUniswapV2RouterABI from "../contracts/interfaces/router_abi.json";
-import IUniswapV2FactoryABI from "../contracts/interfaces/factory_abi.json";
-import usdcABI from "../contracts/interfaces/usdc_abi.json";
+import { getNamedAccounts, ethers, network } from "hardhat";
+import { networkConfig } from "../helper-hardhat-config";
+
 import { BigNumber } from "ethers";
-import {
-  Snow,
-  IUsdc,
-  IUniswapV2Factory,
-  IUniswapV2Router,
-} from "../typechain-types";
+import { IUsdc, IUniswapV2Factory, IUniswapV2Router } from "../typechain-types";
 
 const addLiquidity = async (
   tokenA: IUsdc,
@@ -20,11 +12,6 @@ const addLiquidity = async (
 ) => {
   //   const { getNamedAccounts, deployments, network, ethers } = hre;
   const { deployer } = await getNamedAccounts();
-
-  //   const usdc = await ethers.getContractAt(
-  //     IUsdc,
-  //     networkConfig[network.name].usdc!
-  //   );
 
   const UniswapV2Router: IUniswapV2Router = await ethers.getContractAt(
     "IUniswapV2Router",

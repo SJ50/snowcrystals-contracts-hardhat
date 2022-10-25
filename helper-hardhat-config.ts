@@ -13,6 +13,7 @@ export interface networkConfigItem {
   blockConfirmations?: number;
   ethUsdPriceFeed?: string;
   contractVerfication?: boolean;
+  dappStartTime?: string;
 }
 
 export interface networkConfigInfo {
@@ -55,6 +56,7 @@ export const networkConfig: networkConfigInfo = {
     router: "0xc4e4DdB7a71fCF9Bb7356461Ca75124aA9910653",
     blockConfirmations: 6,
     contractVerfication: true,
+    dappStartTime: "2022-10-26T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC
   },
   cronos: {
     dao: "0xeDc5E564811b96Ec8ca2336895C66b3B88F9ef66",
@@ -69,9 +71,10 @@ export const networkConfig: networkConfigInfo = {
     usdt: "0x66e428c3f67a68878562e79A0234c1F83c208770",
     blockConfirmations: 6,
     contractVerfication: true,
+    dappStartTime: "2022-10-26T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC
   },
 };
 
 export const developmentChains = ["hardhat", "localhost"];
-export const mocksDeploymentChains = ["localhost", "cronosTestnet"];
+export const mocksDeploymentChains = ["hardhat", "localhost", "cronosTestnet"];
 export const deploymentChains = ["cronos", "cronosTestnet"];
