@@ -20,9 +20,7 @@ const addLiquidity = async (
 ) => {
   //   const { getNamedAccounts, deployments, network, ethers } = hre;
   const { deployer } = await getNamedAccounts();
-  console.log();
-  console.log("----------------------------------------------------");
-  console.log("Remote/fork chain detected! Deploying liquidity...");
+
   //   const usdc = await ethers.getContractAt(
   //     IUsdc,
   //     networkConfig[network.name].usdc!
@@ -74,11 +72,7 @@ const addLiquidity = async (
     addLiqudityTransactionResponse.wait(1);
     getPair = await UniswapV2Factory.getPair(tokenA.address, tokenB.address);
   }
-  console.log(
-    `Liquidity Pair of $${await tokenA.symbol()}-$${await tokenB.symbol()} deployed at ${getPair}`
-  );
 
-  console.log("----------------------------------------------------");
   return getPair;
 };
 export default addLiquidity;
