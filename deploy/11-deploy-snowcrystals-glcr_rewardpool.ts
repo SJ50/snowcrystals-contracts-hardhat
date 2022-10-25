@@ -3,14 +3,20 @@ import { DeployFunction } from "hardhat-deploy/types";
 import { Glcr } from "../typechain-types";
 import verify from "../utils/verify";
 import { glcrStartTime } from "../utils/startTime";
-import { networkConfig } from "../helper-hardhat-config";
+import { networkConfig, developmentChains } from "../helper-hardhat-config";
 
 const snowCrystalsGlcrRewardPool: DeployFunction = async function (
   hre: HardhatRuntimeEnvironment
 ) {
   const { getNamedAccounts, deployments, network, ethers } = hre;
   const { deploy, log } = deployments;
-  const { deployer } = await getNamedAccounts();
+  const { deployer, dao } = await getNamedAccounts();
+
+  const DAO: string =
+    developmentChains.includes(network.name) ||
+    networkConfig[network.name].dao === undefined
+      ? dao
+      : networkConfig[network.name].dao!;
 
   const glcrRewardPoolStartTime = await glcrStartTime(network.name);
 
@@ -21,11 +27,7 @@ const snowCrystalsGlcrRewardPool: DeployFunction = async function (
   log("Deploying GLCR_REWARD_POOL and waiting for confirmations...");
   const glcrRewardPool = await deploy("GlcrRewardPool", {
     from: deployer,
-    args: [
-      GLCR.address,
-      networkConfig[network.name].dao,
-      glcrRewardPoolStartTime,
-    ],
+    args: [GLCR.address, DAO, glcrRewardPoolStartTime],
     log: true,
     // we need to wait if on a live network so we can verify properly
     waitConfirmations: networkConfig[network.name].blockConfirmations || 0,
@@ -36,7 +38,7 @@ const snowCrystalsGlcrRewardPool: DeployFunction = async function (
   ) {
     await verify(glcrRewardPool.address, [
       GLCR.address,
-      networkConfig[network.name].dao,
+      DAO,
       glcrRewardPoolStartTime,
     ]);
   }

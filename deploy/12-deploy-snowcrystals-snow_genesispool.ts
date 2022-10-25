@@ -3,14 +3,24 @@ import { DeployFunction } from "hardhat-deploy/types";
 import { Snow, IUsdc } from "../typechain-types";
 import verify from "../utils/verify";
 import { glcrStartTime } from "../utils/startTime";
-import { networkConfig, mocksDeploymentChains } from "../helper-hardhat-config";
+import {
+  networkConfig,
+  mocksDeploymentChains,
+  developmentChains,
+} from "../helper-hardhat-config";
 
 const snowCrystalsSnowGenesisRewardPool: DeployFunction = async function (
   hre: HardhatRuntimeEnvironment
 ) {
   const { getNamedAccounts, deployments, network, ethers } = hre;
   const { deploy, log } = deployments;
-  const { deployer } = await getNamedAccounts();
+  const { deployer, dao } = await getNamedAccounts();
+
+  const DAO: string =
+    developmentChains.includes(network.name) ||
+    networkConfig[network.name].dao === undefined
+      ? dao
+      : networkConfig[network.name].dao!;
 
   const snowGenesisRewardPoolStartTime = await glcrStartTime(network.name);
 
@@ -34,7 +44,7 @@ const snowCrystalsSnowGenesisRewardPool: DeployFunction = async function (
     args: [
       SNOW.address,
       snowGenesisRewardPoolStartTime,
-      networkConfig[network.name].dao,
+      DAO,
       120,
       USDC.address,
     ],
@@ -49,7 +59,7 @@ const snowCrystalsSnowGenesisRewardPool: DeployFunction = async function (
     await verify(snowGenesisRewardPool.address, [
       SNOW.address,
       snowGenesisRewardPoolStartTime,
-      networkConfig[network.name].dao,
+      DAO,
       120,
       USDC.address,
     ]);

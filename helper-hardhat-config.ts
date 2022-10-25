@@ -22,14 +22,10 @@ export interface networkConfigInfo {
 
 export const networkConfig: networkConfigInfo = {
   hardhat: {
-    dao: "0xeDc5E564811b96Ec8ca2336895C66b3B88F9ef66",
-    dev: "0x8680492A2587F3Eb03ca0468F9695A6D21742CfC",
     bandDatafeedRef: "0xDA7a001b254CD22e46d3eAB04d937489c93174C3",
     router: "0x145677FC4d9b8F19B5D56d1820c48e0443049a30",
   },
   localhost: {
-    dao: "0xeDc5E564811b96Ec8ca2336895C66b3B88F9ef66",
-    dev: "0x8680492A2587F3Eb03ca0468F9695A6D21742CfC",
     bandDatafeedRef: "0xDA7a001b254CD22e46d3eAB04d937489c93174C3",
     router: "0x145677FC4d9b8F19B5D56d1820c48e0443049a30",
   },

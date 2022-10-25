@@ -2,17 +2,29 @@ import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import verify from "../utils/verify";
 import { glcrStartTime } from "../utils/startTime";
-import { networkConfig } from "../helper-hardhat-config";
+import { networkConfig, developmentChains } from "../helper-hardhat-config";
 
 const snowCrystalsGlcr: DeployFunction = async function (
   hre: HardhatRuntimeEnvironment
 ) {
   const { getNamedAccounts, deployments, network } = hre;
   const { deploy, log } = deployments;
-  const { deployer } = await getNamedAccounts();
+  const { deployer, dao, dev } = await getNamedAccounts();
 
   const sharetoken_name = "snowcrystals.finance SHARE";
   const sharetoken_symbol = "GLCR";
+
+  const DAO: string =
+    developmentChains.includes(network.name) ||
+    networkConfig[network.name].dao === undefined
+      ? dao
+      : networkConfig[network.name].dao!;
+
+  let DEV: string =
+    developmentChains.includes(network.name) ||
+    networkConfig[network.name].dev === undefined
+      ? dev
+      : networkConfig[network.name].dev!;
 
   log();
   log("----------------------------------------------------");
@@ -24,8 +36,8 @@ const snowCrystalsGlcr: DeployFunction = async function (
       sharetoken_name,
       sharetoken_symbol,
       await glcrStartTime(network.name),
-      networkConfig[network.name].dao,
-      networkConfig[network.name].dev,
+      DAO,
+      DEV,
     ],
     log: true,
     // we need to wait if on a live network so we can verify properly
@@ -39,8 +51,8 @@ const snowCrystalsGlcr: DeployFunction = async function (
       sharetoken_name,
       sharetoken_symbol,
       await glcrStartTime(network.name),
-      networkConfig[network.name].dao,
-      networkConfig[network.name].dev,
+      DAO,
+      DEV,
     ]);
   }
   log(`$GLCR deployed at ${glcr.address}`);
