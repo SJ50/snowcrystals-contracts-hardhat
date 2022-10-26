@@ -17,16 +17,13 @@ const snowCrystalsSnowNode: DeployFunction = async function (
   const nodeStartTime =
     (await glcrStartTime(network.name)) + 9 * ONE_DAYS_IN_SECS;
 
-  let USDC: IUsdc;
-  if (mocksDeploymentChains.includes(network.name)) {
-    USDC = await ethers.getContract("Mock USDC", deployer);
-  } else {
-    USDC = await ethers.getContractAt(
-      "IUsdc",
-      networkConfig[network.name].usdc!,
-      deployer
-    );
-  }
+  const USDC: IUsdc = mocksDeploymentChains.includes(network.name)
+    ? await ethers.getContract("Mock USDC", deployer)
+    : await ethers.getContractAt(
+        "IUsdc",
+        networkConfig[network.name].usdc!,
+        deployer
+      );
   const SNOW: Snow = await ethers.getContract("Snow", deployer);
 
   const UsdcSnowLpAddress: string = await addLiqudity(

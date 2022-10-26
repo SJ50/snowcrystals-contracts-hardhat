@@ -12,16 +12,13 @@ const snowCrystalsZap: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  let USDC: IUsdc;
-  if (mocksDeploymentChains.includes(network.name)) {
-    USDC = await ethers.getContract("Mock USDC", deployer);
-  } else {
-    USDC = await ethers.getContractAt(
-      "IUsdc",
-      networkConfig[network.name].usdc!,
-      deployer
-    );
-  }
+  const USDC: IUsdc = mocksDeploymentChains.includes(network.name)
+    ? await ethers.getContract("Mock USDC", deployer)
+    : await ethers.getContractAt(
+        "IUsdc",
+        networkConfig[network.name].usdc!,
+        deployer
+      );
 
   log();
   log("----------------------------------------------------");

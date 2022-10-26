@@ -24,16 +24,13 @@ const snowCrystalsSnowGenesisRewardPool: DeployFunction = async function (
 
   const snowGenesisRewardPoolStartTime = await glcrStartTime(network.name);
 
-  let USDC: IUsdc;
-  if (mocksDeploymentChains.includes(network.name)) {
-    USDC = await ethers.getContract("Mock USDC", deployer);
-  } else {
-    USDC = await ethers.getContractAt(
-      "IUsdc",
-      networkConfig[network.name].usdc!,
-      deployer
-    );
-  }
+  const USDC: IUsdc = mocksDeploymentChains.includes(network.name)
+    ? await ethers.getContract("Mock USDC", deployer)
+    : await ethers.getContractAt(
+        "IUsdc",
+        networkConfig[network.name].usdc!,
+        deployer
+      );
   const SNOW: Snow = await ethers.getContract("Snow", deployer);
 
   log();
