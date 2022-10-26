@@ -1,13 +1,13 @@
 import { ethers, run, network, getNamedAccounts } from "hardhat";
 import {
   IUsdc,
-  Snow,
+  Glcr,
   TaxOfficeV3,
   Boardroom,
   Zap,
   WrappedRouter,
-  SnowRebateTreasury,
-  DevSnowRebateTreasury,
+  GlcrRebateTreasury,
+  DevGlcrRebateTreasury,
   Treasury,
 } from "../typechain-types";
 import {
@@ -40,15 +40,15 @@ async function main() {
         deployer
       );
 
-  const SNOW: Snow = await ethers.getContract("Snow", deployer);
+  const GLCR: Glcr = await ethers.getContract("Glcr", deployer);
   const TAXOFFICE: TaxOfficeV3 = await ethers.getContract(
     "TaxOfficeV3",
     deployer
   );
   const BOARDROOM: Boardroom = await ethers.getContract("Boardroom", deployer);
-  const USDC_SNOW_LP_ADDRESS: string = await addLiqudity(
+  const USDC_GLCR_LP_ADDRESS: string = await addLiqudity(
     USDC,
-    SNOW,
+    GLCR,
     ethers.BigNumber.from(1 * 10 ** 6),
     ethers.utils.parseEther("1")
   );
@@ -57,94 +57,94 @@ async function main() {
     "WrappedRouter",
     deployer
   );
-  const DAO_SNOW_REBATE_TREASURY: SnowRebateTreasury = await ethers.getContract(
-    "SnowRebateTreasury",
+  const DAO_GLCR_REBATE_TREASURY: GlcrRebateTreasury = await ethers.getContract(
+    "GlcrRebateTreasury",
     deployer
   );
-  const DEV_SNOW_REBATE_TREASURY: DevSnowRebateTreasury =
-    await ethers.getContract("DevSnowRebateTreasury", deployer);
+  const DEV_GLCR_REBATE_TREASURY: DevGlcrRebateTreasury =
+    await ethers.getContract("DevGlcrRebateTreasury", deployer);
 
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
 
   console.log();
   console.log("----------------------------------------------------");
-  console.log("setting $SNOW static tax rate to 25%...");
+  console.log("setting $GLCR static tax rate to 25%...");
 
-  const setMainTokenStaticTaxRateTransactionResponse =
-    await TAXOFFICE.setMainTokenStaticTaxRate(2500);
-  setMainTokenStaticTaxRateTransactionResponse.wait(1);
-  console.log(`(tx: ${setMainTokenStaticTaxRateTransactionResponse.hash})...`);
+  const setShareTokenStaticTaxRateTransactionResponse =
+    await TAXOFFICE.setShareTokenStaticTaxRate(2500);
+  setShareTokenStaticTaxRateTransactionResponse.wait(1);
+  console.log(`(tx: ${setShareTokenStaticTaxRateTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log();
   console.log("----------------------------------------------------");
   console.log(
-    "excluding BoardRoom as BOTH from tax to make claiming $SNOW taxfree..."
+    "excluding BoardRoom as BOTH from tax to deposit and withdraw $GLCR taxfree..."
   );
 
-  const setMainTokenWhitelistTypeBoardRoomTransactionResponse =
-    await TAXOFFICE.setMainTokenWhitelistType(
+  const setShareTokenWhitelistTypeBoardRoomTransactionResponse =
+    await TAXOFFICE.setShareTokenWhitelistType(
       BOARDROOM.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeBoardRoomTransactionResponse.wait(1);
+  setShareTokenWhitelistTypeBoardRoomTransactionResponse.wait(1);
 
   console.log(
-    `(tx: ${setMainTokenWhitelistTypeBoardRoomTransactionResponse.hash})...`
+    `(tx: ${setShareTokenWhitelistTypeBoardRoomTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
 
   console.log();
   console.log("----------------------------------------------------");
   console.log(
-    "excluding Usdc-Snow-LP as SENDER only from tax to make buying $SNOW taxfree..."
+    "excluding Usdc-Glcr-LP as SENDER only from tax to make buying $GLCR taxfree..."
   );
 
-  const setMainTokenWhitelistTypeSnowLPTransactionResponse =
-    await TAXOFFICE.setMainTokenWhitelistType(
-      USDC_SNOW_LP_ADDRESS,
+  const setShareTokenWhitelistTypeGlcrLPTransactionResponse =
+    await TAXOFFICE.setShareTokenWhitelistType(
+      USDC_GLCR_LP_ADDRESS,
       1 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeSnowLPTransactionResponse.wait(1);
+  setShareTokenWhitelistTypeGlcrLPTransactionResponse.wait(1);
 
   console.log(
-    `(tx: ${setMainTokenWhitelistTypeSnowLPTransactionResponse.hash})...`
+    `(tx: ${setShareTokenWhitelistTypeGlcrLPTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
 
   console.log();
   console.log("----------------------------------------------------");
   console.log(
-    "excluding Zap as SENDER only from tax to make $SNOW properly taxed..."
+    "excluding Zap as SENDER only from tax to make $GLCR properly taxed..."
   );
 
-  const setMainTokenWhitelistTypeZapTransactionResponse =
-    await TAXOFFICE.setMainTokenWhitelistType(
+  const setShareTokenWhitelistTypeZapTransactionResponse =
+    await TAXOFFICE.setShareTokenWhitelistType(
       ZAP.address,
       1 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeZapTransactionResponse.wait(1);
+  setShareTokenWhitelistTypeZapTransactionResponse.wait(1);
 
   console.log(
-    `(tx: ${setMainTokenWhitelistTypeZapTransactionResponse.hash})...`
+    `(tx: ${setShareTokenWhitelistTypeZapTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
 
   console.log();
   console.log("----------------------------------------------------");
   console.log(
-    "excluding TaxOffice as BOTH from tax to make $SNOW tax loop free..."
+    "excluding TaxOffice as BOTH from tax to make $GLCR tax loop free..."
   );
 
-  const setMainTokenWhitelistTypeTaxOfficeTransactionResponse =
-    await TAXOFFICE.setMainTokenWhitelistType(
+  const setShareTokenWhitelistTypeTaxOfficeTransactionResponse =
+    await TAXOFFICE.setShareTokenWhitelistType(
       TAXOFFICE.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeTaxOfficeTransactionResponse.wait(1);
+  setShareTokenWhitelistTypeTaxOfficeTransactionResponse.wait(1);
 
   console.log(
-    `(tx: ${setMainTokenWhitelistTypeTaxOfficeTransactionResponse.hash})...`
+    `(tx: ${setShareTokenWhitelistTypeTaxOfficeTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
 
@@ -154,105 +154,105 @@ async function main() {
     "excluding WrappedRouter as BOTH from tax to making LP tax free..."
   );
 
-  const setMainTokenWhitelistTypeWrappedRouterTransactionResponse =
-    await TAXOFFICE.setMainTokenWhitelistType(
+  const setShareTokenWhitelistTypeWrappedRouterTransactionResponse =
+    await TAXOFFICE.setShareTokenWhitelistType(
       WRAPPED_ROUTER.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeWrappedRouterTransactionResponse.wait(1);
+  setShareTokenWhitelistTypeWrappedRouterTransactionResponse.wait(1);
 
   console.log(
-    `(tx: ${setMainTokenWhitelistTypeWrappedRouterTransactionResponse.hash})...`
+    `(tx: ${setShareTokenWhitelistTypeWrappedRouterTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
 
   console.log();
   console.log("----------------------------------------------------");
   console.log(
-    "excluding DaoSnowRebateTreasury as BOTH from tax to send and claim $SNOW tax free..."
+    "excluding DaoGlcrRebateTreasury as BOTH from tax to send and claim $GLCR tax free..."
   );
 
-  const setMainTokenWhitelistTypeDaoSnowRebateTreasuryTransactionResponse =
-    await TAXOFFICE.setMainTokenWhitelistType(
-      DAO_SNOW_REBATE_TREASURY.address,
+  const setShareTokenWhitelistTypeDaoGlcrRebateTreasuryTransactionResponse =
+    await TAXOFFICE.setShareTokenWhitelistType(
+      DAO_GLCR_REBATE_TREASURY.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeDaoSnowRebateTreasuryTransactionResponse.wait(1);
+  setShareTokenWhitelistTypeDaoGlcrRebateTreasuryTransactionResponse.wait(1);
 
   console.log(
-    `(tx: ${setMainTokenWhitelistTypeDaoSnowRebateTreasuryTransactionResponse.hash})...`
+    `(tx: ${setShareTokenWhitelistTypeDaoGlcrRebateTreasuryTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
 
   console.log();
   console.log("----------------------------------------------------");
   console.log(
-    "excluding DevSnowRebateTreasury as BOTH from tax to send and claim $SNOW tax free..."
+    "excluding DevGlcrRebateTreasury as BOTH from tax to send and claim $GLCR tax free..."
   );
 
-  const setMainTokenWhitelistTypeDevSnowRebateTreasuryTransactionResponse =
-    await TAXOFFICE.setMainTokenWhitelistType(
-      DEV_SNOW_REBATE_TREASURY.address,
+  const setShareTokenWhitelistTypeDevGlcrRebateTreasuryTransactionResponse =
+    await TAXOFFICE.setShareTokenWhitelistType(
+      DEV_GLCR_REBATE_TREASURY.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeDevSnowRebateTreasuryTransactionResponse.wait(1);
+  setShareTokenWhitelistTypeDevGlcrRebateTreasuryTransactionResponse.wait(1);
 
   console.log(
-    `(tx: ${setMainTokenWhitelistTypeDevSnowRebateTreasuryTransactionResponse.hash})...`
+    `(tx: ${setShareTokenWhitelistTypeDevGlcrRebateTreasuryTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
 
   console.log();
   console.log("----------------------------------------------------");
   console.log(
-    "excluding Treasury as BOTH from tax to send and claim $SNOW tax free..."
+    "excluding Treasury as BOTH from tax to send and claim $GLCR tax free..."
   );
 
-  const setMainTokenWhitelistTypeTreasuryTransactionResponse =
-    await TAXOFFICE.setMainTokenWhitelistType(
+  const setShareTokenWhitelistTypeTreasuryTransactionResponse =
+    await TAXOFFICE.setShareTokenWhitelistType(
       TREASURY.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeTreasuryTransactionResponse.wait(1);
+  setShareTokenWhitelistTypeTreasuryTransactionResponse.wait(1);
 
   console.log(
-    `(tx: ${setMainTokenWhitelistTypeTreasuryTransactionResponse.hash})...`
+    `(tx: ${setShareTokenWhitelistTypeTreasuryTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
 
   console.log();
   console.log("----------------------------------------------------");
   console.log(
-    "excluding DAO as BOTH from tax to send and claim $SNOW tax free..."
+    "excluding DAO as BOTH from tax to send and claim $GLCR tax free..."
   );
 
-  const setMainTokenWhitelistTypeDaoTransactionResponse =
-    await TAXOFFICE.setMainTokenWhitelistType(
+  const setShareTokenWhitelistTypeDaoTransactionResponse =
+    await TAXOFFICE.setShareTokenWhitelistType(
       DAO,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeDaoTransactionResponse.wait(1);
+  setShareTokenWhitelistTypeDaoTransactionResponse.wait(1);
 
   console.log(
-    `(tx: ${setMainTokenWhitelistTypeDaoTransactionResponse.hash})...`
+    `(tx: ${setShareTokenWhitelistTypeDaoTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
 
   console.log();
   console.log("----------------------------------------------------");
   console.log(
-    "excluding DEV as BOTH from tax to send and claim $SNOW tax free..."
+    "excluding DEV as BOTH from tax to send and claim $GLCR tax free..."
   );
 
-  const setMainTokenWhitelistTypeDevTransactionResponse =
-    await TAXOFFICE.setMainTokenWhitelistType(
+  const setShareTokenWhitelistTypeDevTransactionResponse =
+    await TAXOFFICE.setShareTokenWhitelistType(
       DEV,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeDevTransactionResponse.wait(1);
+  setShareTokenWhitelistTypeDevTransactionResponse.wait(1);
 
   console.log(
-    `(tx: ${setMainTokenWhitelistTypeDevTransactionResponse.hash})...`
+    `(tx: ${setShareTokenWhitelistTypeDevTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
 }
