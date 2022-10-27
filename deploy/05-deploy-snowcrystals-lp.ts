@@ -10,7 +10,6 @@ const snowCrystalsLP: DeployFunction = async function (
   const { getNamedAccounts, network, ethers } = hre;
   const { deployer } = await getNamedAccounts();
 
-  console.log();
   console.log(`
 ----------------------------------------------------`);
   console.log("Remote/fork chain detected! Deploying liquidity...");
