@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
-interface IUsdc {
+interface IERC20Token {
     function allowance(address owner, address spender)
         external
         view

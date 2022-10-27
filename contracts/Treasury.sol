@@ -49,7 +49,7 @@ contract Treasury is ContractGuard, ReentrancyGuard {
     address public glcr;
 
     address public boardroom;
-    address public snowOracle;
+    address public oracle;
 
     // price
     uint256 public snowPriceOne;
@@ -88,9 +88,6 @@ contract Treasury is ContractGuard, ReentrancyGuard {
 
     address public taxOffice;
 
-    address public rebateTreasury;
-    uint256 public rebateTreasurySharedPercent;
-
     uint256 public minExpansion;
     uint256 public fixedExpansion;
     uint256 public expansionFactor;
@@ -113,7 +110,6 @@ contract Treasury is ContractGuard, ReentrancyGuard {
     event BoardroomFunded(uint256 timestamp, uint256 seigniorage);
     event DaoFundFunded(uint256 timestamp, uint256 seigniorage);
     event DevFundFunded(uint256 timestamp, uint256 seigniorage);
-    event RebateTreasuryFunded(uint256 timestamp, uint256 seigniorage);
 
     /* =================== Modifier =================== */
 
@@ -171,7 +167,7 @@ contract Treasury is ContractGuard, ReentrancyGuard {
 
     // oracle
     function getSnowPrice() public view returns (uint256 snowPrice) {
-        try IOracle(snowOracle).consult(snow, 1e18) returns (uint144 price) {
+        try IOracle(oracle).consult(snow, 1e18) returns (uint144 price) {
             return uint256(price);
         } catch {
             revert("Treasury: failed to consult SNOW price from the oracle");
@@ -179,7 +175,7 @@ contract Treasury is ContractGuard, ReentrancyGuard {
     }
 
     function getSnowUpdatedPrice() public view returns (uint256 _snowPrice) {
-        try IOracle(snowOracle).twap(snow, 1e18) returns (uint144 price) {
+        try IOracle(oracle).twap(snow, 1e18) returns (uint144 price) {
             return uint256(price);
         } catch {
             revert("Treasury: failed to consult Snow price from the oracle");
@@ -280,7 +276,7 @@ contract Treasury is ContractGuard, ReentrancyGuard {
         address _snow,
         address _sBond,
         address _glcr,
-        address _snowOracle,
+        address _oracle,
         address _boardroom,
         uint256 _startTime,
         address _taxOffice,
@@ -289,7 +285,7 @@ contract Treasury is ContractGuard, ReentrancyGuard {
         snow = _snow;
         sBond = _sBond;
         glcr = _glcr;
-        snowOracle = _snowOracle;
+        oracle = _oracle;
         boardroom = _boardroom;
         startTime = _startTime;
 
@@ -343,8 +339,8 @@ contract Treasury is ContractGuard, ReentrancyGuard {
         boardroom = _boardroom;
     }
 
-    function setSnowOracle(address _snowOracle) external onlyOperator {
-        snowOracle = _snowOracle;
+    function setOracle(address _oracle) external onlyOperator {
+        oracle = _oracle;
     }
 
     function setTaxOffice(address _taxOffice) external onlyOperator {
@@ -489,22 +485,17 @@ contract Treasury is ContractGuard, ReentrancyGuard {
         address _daoFund,
         uint256 _daoFundSharedPercent,
         address _devFund,
-        uint256 _devFundSharedPercent,
-        address _rebateTreasury,
-        uint256 _rebateTreasurySharedPercent
+        uint256 _devFundSharedPercent
     ) external onlyOperator {
         require(_daoFund != address(0), "zero");
         require(_daoFundSharedPercent <= 3000, "out of range"); // <= 30%
         require(_devFund != address(0), "zero");
         require(_devFundSharedPercent <= 1000, "out of range"); // <= 10%
-        require(_rebateTreasury != address(0), "zero");
-        require(_rebateTreasurySharedPercent <= 3_000, "out of range"); // <= 30%
+
         daoFund = _daoFund;
         daoFundSharedPercent = _daoFundSharedPercent;
         devFund = _devFund;
         devFundSharedPercent = _devFundSharedPercent;
-        rebateTreasury = _rebateTreasury;
-        rebateTreasurySharedPercent = _rebateTreasurySharedPercent;
     }
 
     function setMaxDiscountRate(uint256 _maxDiscountRate)
@@ -561,7 +552,7 @@ contract Treasury is ContractGuard, ReentrancyGuard {
     /* ========== MUTABLE FUNCTIONS ========== */
 
     function _updateSnowPrice() internal {
-        try IOracle(snowOracle).update() {} catch {}
+        try IOracle(oracle).update() {} catch {}
     }
 
     function getSnowCirculatingSupply() public view returns (uint256) {

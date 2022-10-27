@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { Snow, IUsdc } from "../typechain-types";
+import { Snow, IERC20Token } from "../typechain-types";
 import verify from "../utils/verify";
 import { glcrStartTime } from "../utils/startTime";
 import {
@@ -24,10 +24,10 @@ const snowCrystalsSnowGenesisRewardPool: DeployFunction = async function (
 
   const snowGenesisRewardPoolStartTime = await glcrStartTime(network.name);
 
-  const USDC: IUsdc = mocksDeploymentChains.includes(network.name)
+  const USDC: IERC20Token = mocksDeploymentChains.includes(network.name)
     ? await ethers.getContract("Mock USDC", deployer)
     : await ethers.getContractAt(
-        "IUsdc",
+        "IERC20Token",
         networkConfig[network.name].usdc!,
         deployer
       );

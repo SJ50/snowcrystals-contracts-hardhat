@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { IUsdc, Glcr } from "../typechain-types";
+import { IERC20Token, Glcr } from "../typechain-types";
 import verify from "../utils/verify";
 import { glcrStartTime } from "../utils/startTime";
 import addLiqudity from "../utils/addLiquidity";
@@ -18,10 +18,10 @@ const snowCrystalsGlcrNode: DeployFunction = async function (
   const nodeStartTime =
     (await glcrStartTime(network.name)) + 9 * ONE_DAYS_IN_SECS;
 
-  const USDC: IUsdc = mocksDeploymentChains.includes(network.name)
+  const USDC: IERC20Token = mocksDeploymentChains.includes(network.name)
     ? await ethers.getContract("Mock USDC", deployer)
     : await ethers.getContractAt(
-        "IUsdc",
+        "IERC20Token",
         networkConfig[network.name].usdc!,
         deployer
       );

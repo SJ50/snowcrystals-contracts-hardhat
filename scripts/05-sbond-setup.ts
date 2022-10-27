@@ -1,4 +1,4 @@
-import { ethers, run, network, getNamedAccounts } from "hardhat";
+import { ethers, getNamedAccounts } from "hardhat";
 import { SBond, Treasury } from "../typechain-types";
 
 async function main() {

@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { IUsdc, Snow, Glcr, SnowOracle } from "../typechain-types";
+import { IERC20Token, Snow, Glcr, SnowOracle } from "../typechain-types";
 import verify from "../utils/verify";
 
 import { networkConfig, mocksDeploymentChains } from "../helper-hardhat-config";
@@ -12,10 +12,10 @@ const snowCrystalsTaxOffice: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const USDC: IUsdc = mocksDeploymentChains.includes(network.name)
+  const USDC: IERC20Token = mocksDeploymentChains.includes(network.name)
     ? await ethers.getContract("Mock USDC", deployer)
     : await ethers.getContractAt(
-        "IUsdc",
+        "IERC20Token",
         networkConfig[network.name].usdc!,
         deployer
       );

@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { Snow, IUsdc, Glcr } from "../typechain-types";
+import { Snow, IERC20Token, Glcr } from "../typechain-types";
 import addLiqudity from "../utils/addLiquidity";
 import { networkConfig, mocksDeploymentChains } from "../helper-hardhat-config";
 
@@ -14,10 +14,10 @@ const snowCrystalsLP: DeployFunction = async function (
   console.log("----------------------------------------------------");
   console.log("Remote/fork chain detected! Deploying liquidity...");
 
-  const USDC: IUsdc = mocksDeploymentChains.includes(network.name)
+  const USDC: IERC20Token = mocksDeploymentChains.includes(network.name)
     ? await ethers.getContract("Mock USDC", deployer)
     : await ethers.getContractAt(
-        "IUsdc",
+        "IERC20Token",
         networkConfig[network.name].usdc!,
         deployer
       );
