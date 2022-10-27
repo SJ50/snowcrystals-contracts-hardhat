@@ -33,8 +33,8 @@ const snowCrystalsSnowOracle: DeployFunction = async function (
     ethers.utils.parseEther("1")
   );
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying SNOW_ORACLE and waiting for confirmations...");
   const snowOracle = await deploy("SnowOracle", {
     from: deployer,

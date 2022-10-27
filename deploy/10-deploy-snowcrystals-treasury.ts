@@ -10,8 +10,8 @@ const snowCrystalsTreasury: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying TREASURY and waiting for confirmations...");
   const treasury = await deploy("Treasury", {
     from: deployer,

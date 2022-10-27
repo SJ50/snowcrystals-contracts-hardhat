@@ -33,8 +33,8 @@ const snowCrystalsSnowGenesisRewardPool: DeployFunction = async function (
       );
   const SNOW: Snow = await ethers.getContract("Snow", deployer);
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying SNOW_GENESIS_REWARD_POOL and waiting for confirmations...");
   const snowGenesisRewardPool = await deploy("SnowGenesisRewardPool", {
     from: deployer,

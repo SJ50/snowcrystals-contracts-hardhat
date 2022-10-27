@@ -1,7 +1,7 @@
-import { HardhatUserConfig } from "hardhat/config";
+import { task, HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "dotenv/config";
-import { version, item, connect } from "@1password/op-js";
+import { item } from "@1password/op-js";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 import "@typechain/hardhat";
@@ -10,6 +10,8 @@ import "@nomiclabs/hardhat-ethers";
 import "@nomiclabs/hardhat-etherscan";
 import "@cronos-labs/hardhat-cronoscan";
 import "hardhat-deploy";
+import "./tasks/blocknumber";
+import "./tasks/treasury-allocateSeigniorage";
 
 const CRONOSCAN_API_KEY: string = process.env.CRONOSCAN_API_KEY!;
 const CRONOSCAN_TESTNET_API_KEY: string =
@@ -30,10 +32,6 @@ const config: HardhatUserConfig = {
         url: "https://evm.cronos.org",
       },
     },
-    // rinkeby: {
-    //   url: "https://eth-rinkeby.alchemyapi.io/v2/123abc123abc123abc123abc123abcde",
-    //   accounts: [privateKey1, privateKey2, ...]
-    // },
     cronos: {
       url: "https://evm.cronos.org",
       accounts: [DEPLOYER],

@@ -45,8 +45,8 @@ async function main() {
   const SNOW_GENESIS_REWARDPOOL: SnowGenesisRewardPool =
     await ethers.getContract("SnowGenesisRewardPool", deployer);
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("initializing Treasury...");
 
   const initializeTransactionResponse = await TREASURY.initialize(
@@ -63,8 +63,8 @@ async function main() {
   console.log(`(tx: ${initializeTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("set Funding to DAO and DEV..");
 
   const setExtraFundsTransactionResponse = await TREASURY.setExtraFunds(
@@ -78,8 +78,8 @@ async function main() {
   console.log(`(tx: ${setExtraFundsTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting TREASURY as $SNOW operator...");
 
   const setMintingFactorForPayingDebtTransactionResponse =

@@ -26,8 +26,8 @@ const snowCrystalsGlcr: DeployFunction = async function (
       ? dev
       : networkConfig[network.name].dev!;
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying $GLCR and waiting for confirmations...");
 
   const glcr = await deploy("Glcr", {

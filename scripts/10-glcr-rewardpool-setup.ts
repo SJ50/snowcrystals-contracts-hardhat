@@ -39,8 +39,8 @@ async function main() {
     ethers.utils.parseEther("1")
   );
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("adding USDC-SNOW-LP to GlcrRewardPool...");
 
   const addUsdcSnowLPTransactionResponse = await GLCR_REWARDPOOL.add(
@@ -54,8 +54,8 @@ async function main() {
   console.log(`(tx: ${addUsdcSnowLPTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("adding USDC-GLCR-LP to GlcrRewardPool...");
 
   const addUsdcGlcrLPTransactionResponse = await GLCR_REWARDPOOL.add(
@@ -69,8 +69,8 @@ async function main() {
   console.log(`(tx: ${addUsdcGlcrLPTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("adding $SBOND to GlcrRewardPool...");
 
   const addSbondTransactionResponse = await GLCR_REWARDPOOL.add(

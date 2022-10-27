@@ -23,8 +23,8 @@ async function main() {
     deployer
   );
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting $USDC as asset in DevSnowRebateTreasury...");
 
   const setAssetTransactionResponse = await DEV_SNOW_REBATE_TREASURY.setAsset(

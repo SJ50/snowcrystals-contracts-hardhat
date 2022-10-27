@@ -66,8 +66,8 @@ async function main() {
 
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting $GLCR static tax rate to 25%...");
 
   const setShareTokenStaticTaxRateTransactionResponse =
@@ -76,8 +76,8 @@ async function main() {
   console.log(`(tx: ${setShareTokenStaticTaxRateTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log(
     "excluding BoardRoom as BOTH from tax to deposit and withdraw $GLCR taxfree..."
   );
@@ -94,8 +94,8 @@ async function main() {
   );
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log(
     "excluding Usdc-Glcr-LP as SENDER only from tax to make buying $GLCR taxfree..."
   );
@@ -112,8 +112,8 @@ async function main() {
   );
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log(
     "excluding Zap as SENDER only from tax to make $GLCR properly taxed..."
   );
@@ -130,8 +130,8 @@ async function main() {
   );
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log(
     "excluding TaxOffice as BOTH from tax to make $GLCR tax loop free..."
   );
@@ -148,8 +148,8 @@ async function main() {
   );
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log(
     "excluding WrappedRouter as BOTH from tax to making LP tax free..."
   );
@@ -166,8 +166,8 @@ async function main() {
   );
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log(
     "excluding DaoGlcrRebateTreasury as BOTH from tax to send and claim $GLCR tax free..."
   );
@@ -184,8 +184,8 @@ async function main() {
   );
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log(
     "excluding DevGlcrRebateTreasury as BOTH from tax to send and claim $GLCR tax free..."
   );
@@ -202,8 +202,8 @@ async function main() {
   );
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log(
     "excluding Treasury as BOTH from tax to send and claim $GLCR tax free..."
   );
@@ -220,8 +220,8 @@ async function main() {
   );
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log(
     "excluding DAO as BOTH from tax to send and claim $GLCR tax free..."
   );
@@ -238,8 +238,8 @@ async function main() {
   );
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log(
     "excluding DEV as BOTH from tax to send and claim $GLCR tax free..."
   );

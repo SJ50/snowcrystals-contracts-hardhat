@@ -10,8 +10,8 @@ const snowCrystalsWrappedRouter: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying WRAPPED_ROUTER and waiting for confirmations...");
   const wrappedRouter = await deploy("WrappedRouter", {
     from: deployer,

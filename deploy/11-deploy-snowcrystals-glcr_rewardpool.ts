@@ -22,8 +22,8 @@ const snowCrystalsGlcrRewardPool: DeployFunction = async function (
 
   const GLCR: Glcr = await ethers.getContract("Glcr", deployer);
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying GLCR_REWARD_POOL and waiting for confirmations...");
   const glcrRewardPool = await deploy("GlcrRewardPool", {
     from: deployer,

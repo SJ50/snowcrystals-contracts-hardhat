@@ -32,8 +32,8 @@ const snowCrystalsGlcrOracle: DeployFunction = async function (
     ethers.utils.parseEther("1")
   );
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying GLCR_ORACLE and waiting for confirmations...");
   const glcrOracle = await deploy("GlcrOracle", {
     from: deployer,

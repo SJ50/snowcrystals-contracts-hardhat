@@ -11,8 +11,8 @@ const deployMocks: DeployFunction = async function (
 
   // If we are on a local development network, we need to deploy mocks!
   if (mocksDeploymentChains.includes(network.name)) {
-    log("");
-    log("----------------------------------------------------");
+    log(`
+----------------------------------------------------`);
     log("Local network detected! Deploying mocks...");
     await deploy("Mock USDC", {
       contract: "MockUsdc",

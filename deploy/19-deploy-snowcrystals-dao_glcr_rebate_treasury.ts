@@ -25,8 +25,8 @@ const snowCrystalsDaoGlcrRebateTreasury: DeployFunction = async function (
   );
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying DAO_GLCR_REBATE_TREASURY and waiting for confirmations...");
   const glcrRebateTreasury = await deploy("GlcrRebateTreasury", {
     from: deployer,

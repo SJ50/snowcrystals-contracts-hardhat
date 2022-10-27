@@ -22,8 +22,8 @@ const snowCrystalsDaoSnowRebateTreasury: DeployFunction = async function (
   const TREASURY_ORACLE: Oracle = await ethers.getContract("Oracle", deployer);
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying DAO_SNOW_REBATE_TREASURY and waiting for confirmations...");
   const snowRebateTreasury = await deploy("SnowRebateTreasury", {
     from: deployer,

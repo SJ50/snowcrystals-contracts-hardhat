@@ -10,8 +10,8 @@ async function main() {
   const SNOW: Snow = await ethers.getContract("Snow", deployer);
   const GLCR: Glcr = await ethers.getContract("Glcr", deployer);
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting $SNOW as taxed in ZAP..");
 
   const setIsFeeOnTransferSnowTransactionResponse =
@@ -21,8 +21,8 @@ async function main() {
   console.log(`(tx: ${setIsFeeOnTransferSnowTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting $GLCR as taxed in ZAP..");
 
   const setIsFeeOnTransferGlcrTransactionResponse =

@@ -25,8 +25,8 @@ async function main() {
     deployer
   );
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting $USDC as asset in DaoGlcrRebateTreasury...");
 
   const setAssetTransactionResponse = await DAO_GLCR_REBATE_TREASURY.setAsset(

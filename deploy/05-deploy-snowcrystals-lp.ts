@@ -11,7 +11,8 @@ const snowCrystalsLP: DeployFunction = async function (
   const { deployer } = await getNamedAccounts();
 
   console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+  ----------------------------------------------------`);
   console.log("Remote/fork chain detected! Deploying liquidity...");
 
   const USDC: IERC20Token = mocksDeploymentChains.includes(network.name)

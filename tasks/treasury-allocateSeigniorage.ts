@@ -1,10 +1,15 @@
-import { ethers, getNamedAccounts } from "hardhat";
+// import { ethers, getNamedAccounts } from "hardhat";
+import { task } from "hardhat/config";
 import { Treasury } from "../typechain-types";
 
-async function main() {
+export default task(
+  "allocateSeigniorage",
+  "allocates seigniorage to boardroom"
+).setAction(async (_taskArgs, hre) => {
+  const { getNamedAccounts, run } = hre;
   const { deployer } = await getNamedAccounts();
 
-  const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
+  const TREASURY: Treasury = await hre.ethers.getContract("Treasury", deployer);
 
   console.log();
   console.log("----------------------------------------------------");
@@ -16,12 +21,13 @@ async function main() {
 
   console.log(`(tx: ${allocateSeigniorageTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
-}
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main()
-  .then(() => (process.exitCode = 0))
-  .catch((error) => {
-    console.error(error);
-    process.exitCode = 1;
-  });
+});
+
+// export default task(
+//   "block-number",
+//   "Prints the current block number"
+// ).setAction(async (_taskArgs, hre) => {
+//   await hre.ethers.provider.getBlockNumber().then((blockNumber: number) => {
+//     console.log(`Current block number: ${blockNumber}`);
+//   });
+// });

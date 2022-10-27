@@ -10,8 +10,8 @@ const snowCrystalsUsdcOracle: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying USDC_ORACLE and waiting for confirmations...");
   const usdcOracle = await deploy("UsdcOracle", {
     from: deployer,

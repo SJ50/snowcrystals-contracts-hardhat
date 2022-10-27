@@ -13,8 +13,8 @@ const snowCrystalsSnow: DeployFunction = async function (
   const maintoken_name = "snowcrystals.finance";
   const maintoken_symbol = "SNOW";
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying $SNOW and waiting for confirmations...");
   const snow = await deploy("Snow", {
     from: deployer,

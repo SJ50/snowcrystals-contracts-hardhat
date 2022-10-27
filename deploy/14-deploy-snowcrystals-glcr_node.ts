@@ -34,8 +34,8 @@ const snowCrystalsGlcrNode: DeployFunction = async function (
     ethers.utils.parseEther("1")
   );
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying GLCR_NODE and waiting for confirmations...");
   const glcrNode = await deploy("GlcrNode", {
     from: deployer,

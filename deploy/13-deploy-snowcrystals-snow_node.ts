@@ -33,8 +33,8 @@ const snowCrystalsSnowNode: DeployFunction = async function (
     ethers.utils.parseEther("1")
   );
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying SNOW_NODE and waiting for confirmations...");
   const snowNode = await deploy("SnowNode", {
     from: deployer,

@@ -30,8 +30,8 @@ async function main() {
     await ethers.getContract("SnowGenesisRewardPool", deployer);
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting taxoffice for $SNOW...");
 
   const setTaxOfficeTransactionResponse = await SNOW.setTaxOffice(
@@ -41,8 +41,8 @@ async function main() {
   console.log(`(tx: ${setTaxOfficeTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("funding $SNOW genesispool...");
 
   const distributeRewardTransactionResponse = await SNOW.distributeReward(
@@ -54,8 +54,8 @@ async function main() {
   console.log(`(tx: ${distributeRewardTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting TREASURY as $SNOW operator...");
 
   const transferOperatorTransactionResponse = await SNOW.transferOperator(
@@ -66,8 +66,8 @@ async function main() {
   console.log(`(tx: ${transferOperatorTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("renounce ownership of $SNOW...");
 
   const renounceOwnershipTransactionResponse = await SNOW.renounceOwnership();

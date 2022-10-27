@@ -9,8 +9,8 @@ async function main() {
   const GLCR: Glcr = await ethers.getContract("Glcr", deployer);
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("Initializing Boardroom...");
 
   const initializinTransactionResponse = await BOARDROOM.initialize(
@@ -22,8 +22,8 @@ async function main() {
   console.log(`(tx: ${initializinTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("set Treasury as Boardroom operator...");
 
   const setOperatorTransactionResponse = await BOARDROOM.setOperator(
@@ -34,8 +34,8 @@ async function main() {
   console.log(`(tx: ${setOperatorTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("Manually Approve and Deposit 1 $GLCR from DAO..");
   console.log("----------------------------------------------------");
 }

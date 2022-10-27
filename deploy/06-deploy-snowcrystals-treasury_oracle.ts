@@ -33,8 +33,8 @@ const snowCrystalsTreasury: DeployFunction = async function (
     ethers.utils.parseEther("1")
   );
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying TREASURY_ORACLE and waiting for confirmations...");
   const treasuryOracle = await deploy("Oracle", {
     from: deployer,

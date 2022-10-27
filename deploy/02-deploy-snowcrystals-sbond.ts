@@ -13,8 +13,8 @@ const snowCrystalsSbond: DeployFunction = async function (
   const bondtoken_name = "snowcrystals.finance BOND";
   const bondtoken_symbol = "SBOND";
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying $SBOND and waiting for confirmations...");
   const sBond = await deploy("SBond", {
     from: deployer,

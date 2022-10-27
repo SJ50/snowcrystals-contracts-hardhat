@@ -20,8 +20,8 @@ async function main() {
   );
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting taxoffice for $GLCR...");
 
   const setTaxOfficeTransactionResponse = await GLCR.setTaxOffice(
@@ -31,8 +31,8 @@ async function main() {
   console.log(`(tx: ${setTaxOfficeTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("funding $GLCR rewardpool...");
 
   const distributeRewardTransactionResponse = await GLCR.distributeReward(
@@ -43,8 +43,8 @@ async function main() {
   console.log(`(tx: ${distributeRewardTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting TREASURY as $GLCR operator...");
 
   const transferOperatorTransactionResponse = await GLCR.transferOperator(
@@ -55,8 +55,8 @@ async function main() {
   console.log(`(tx: ${transferOperatorTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("renounce ownership of $GLCR...");
 
   const renounceOwnershipTransactionResponse = await GLCR.renounceOwnership();

@@ -26,8 +26,8 @@ const snowCrystalsTaxOffice: DeployFunction = async function (
     deployer
   );
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying TAXOFFICE and waiting for confirmations...");
   const taxOffice = await deploy("TaxOfficeV3", {
     from: deployer,

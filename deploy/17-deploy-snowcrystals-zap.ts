@@ -20,8 +20,8 @@ const snowCrystalsZap: DeployFunction = async function (
         deployer
       );
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying ZAP and waiting for confirmations...");
   const zap = await deploy("Zap", {
     from: deployer,

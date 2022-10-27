@@ -7,8 +7,8 @@ async function main() {
   const SBOND: SBond = await ethers.getContract("SBond", deployer);
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting TREASURY as $SBOND operator...");
 
   const transferOperatorTransactionResponse = await SBOND.transferOperator(
@@ -19,8 +19,8 @@ async function main() {
   console.log(`(tx: ${transferOperatorTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("renounce ownership of $SBOND...");
 
   const renounceOwnershipTransactionResponse = await SBOND.renounceOwnership();

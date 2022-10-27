@@ -25,8 +25,8 @@ async function main() {
     deployer
   );
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("setting $USDC as asset in DaoSnowRebateTreasury...");
 
   const setAssetTransactionResponse = await DAO_SNOW_REBATE_TREASURY.setAsset(

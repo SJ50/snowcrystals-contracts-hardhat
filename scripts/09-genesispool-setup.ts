@@ -43,8 +43,8 @@ async function main() {
         deployer
       );
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("adding WBTC to genesispool...");
 
   const addWbtcTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
@@ -58,8 +58,8 @@ async function main() {
   console.log(`(tx: ${addWbtcTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("adding WCRO to genesispool...");
 
   const addWcroTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
@@ -73,8 +73,8 @@ async function main() {
   console.log(`(tx: ${addWcroTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("adding WETH to genesispool...");
 
   const addWethTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
@@ -88,8 +88,8 @@ async function main() {
   console.log(`(tx: ${addWethTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("adding DAI to genesispool...");
 
   const addDaiTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
@@ -103,8 +103,8 @@ async function main() {
   console.log(`(tx: ${addDaiTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log();
-  console.log("----------------------------------------------------");
+  console.log(`
+----------------------------------------------------`);
   console.log("adding USDT to genesispool...");
 
   const addUsdtTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(

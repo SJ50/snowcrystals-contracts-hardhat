@@ -10,8 +10,8 @@ const snowCrystalsBoardroom: DeployFunction = async function (
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  log();
-  log("----------------------------------------------------");
+  log(`
+----------------------------------------------------`);
   log("Deploying BOARDROOM and waiting for confirmations...");
   const boardRoom = await deploy("Boardroom", {
     from: deployer,
