@@ -582,7 +582,7 @@
           ]
         },
         "DevGlcrRebateTreasury": {
-          "address": "0x4ab7c733e38831bF2C08844F8d867DaF1cd98dD6",
+          "address": "0xE4EA9D126935B2B0AB5d3f067Bd4FD10A0111F06",
           "abi": [
             {
               "inputs": [
@@ -1126,7 +1126,7 @@
           ]
         },
         "DevSnowRebateTreasury": {
-          "address": "0x43eD19e94847b40F2e114C2eEd8B8B81cC32A72a",
+          "address": "0x6c1f01fD9591342838A0b9C928521ebB42b34fe2",
           "abi": [
             {
               "inputs": [
@@ -3952,7 +3952,7 @@
           ]
         },
         "GlcrRebateTreasury": {
-          "address": "0x094B06C1D17e13826C8587c29a54E52C0ddD4131",
+          "address": "0x843989a7B38CAd86B26C5c04b43060414db301D6",
           "abi": [
             {
               "inputs": [
@@ -10362,7 +10362,7 @@
           ]
         },
         "SnowRebateTreasury": {
-          "address": "0x8976688169df85ac7A0792d82A179285041efE8a",
+          "address": "0x5FB0D5913c796155B035725BBdEbdC1e6bA29E88",
           "abi": [
             {
               "inputs": [
@@ -11009,7 +11009,7 @@
           ]
         },
         "TaxOfficeV3": {
-          "address": "0x6669DCb95130de5490DbbfA70234230e78e23Cc9",
+          "address": "0x564c28671D81371da94bad93d1DA953192a38135",
           "abi": [
             {
               "inputs": [
@@ -27791,11 +27791,6 @@
           ]
         }
       }
-    },
-    {
-      "name": "hardhat",
-      "chainId": "31337",
-      "contracts": {}
     }
   ]
 }
