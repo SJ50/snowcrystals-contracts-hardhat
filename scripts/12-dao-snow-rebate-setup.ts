@@ -37,7 +37,7 @@ async function main() {
     false,
     "0x0000000000000000000000000000000000000000"
   );
-  setAssetTransactionResponse.wait(1);
+  await setAssetTransactionResponse.wait(1);
 
   console.log(`(tx: ${setAssetTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");

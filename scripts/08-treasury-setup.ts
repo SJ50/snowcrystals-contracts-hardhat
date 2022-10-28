@@ -59,7 +59,7 @@ async function main() {
     TAXOFFICE.address,
     [SNOW_GENESIS_REWARDPOOL.address]
   );
-  initializeTransactionResponse.wait(1);
+  await initializeTransactionResponse.wait(1);
   console.log(`(tx: ${initializeTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
@@ -73,7 +73,7 @@ async function main() {
     DEV,
     800
   );
-  setExtraFundsTransactionResponse.wait(1);
+  await setExtraFundsTransactionResponse.wait(1);
 
   console.log(`(tx: ${setExtraFundsTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -84,7 +84,7 @@ async function main() {
 
   const setMintingFactorForPayingDebtTransactionResponse =
     await TREASURY.setMintingFactorForPayingDebt(15000);
-  setMintingFactorForPayingDebtTransactionResponse.wait(1);
+  await setMintingFactorForPayingDebtTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setMintingFactorForPayingDebtTransactionResponse.hash})...`

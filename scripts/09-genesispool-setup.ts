@@ -53,7 +53,7 @@ async function main() {
     false,
     0
   );
-  addWbtcTransactionResponse.wait(1);
+  await addWbtcTransactionResponse.wait(1);
 
   console.log(`(tx: ${addWbtcTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -68,7 +68,7 @@ async function main() {
     false,
     0
   );
-  addWcroTransactionResponse.wait(1);
+  await addWcroTransactionResponse.wait(1);
 
   console.log(`(tx: ${addWcroTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -83,7 +83,7 @@ async function main() {
     false,
     0
   );
-  addWethTransactionResponse.wait(1);
+  await addWethTransactionResponse.wait(1);
 
   console.log(`(tx: ${addWethTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -98,7 +98,7 @@ async function main() {
     false,
     0
   );
-  addDaiTransactionResponse.wait(1);
+  await addDaiTransactionResponse.wait(1);
 
   console.log(`(tx: ${addDaiTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -113,7 +113,7 @@ async function main() {
     false,
     0
   );
-  addUsdtTransactionResponse.wait(1);
+  await addUsdtTransactionResponse.wait(1);
 
   console.log(`(tx: ${addUsdtTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");

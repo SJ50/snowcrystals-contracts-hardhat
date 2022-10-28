@@ -37,7 +37,7 @@ async function main() {
   const setTaxOfficeTransactionResponse = await SNOW.setTaxOffice(
     TAXOFFICE.address
   );
-  setTaxOfficeTransactionResponse.wait(1);
+  await setTaxOfficeTransactionResponse.wait(1);
   console.log(`(tx: ${setTaxOfficeTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
@@ -49,7 +49,7 @@ async function main() {
     SNOW_GENESIS_REWARDPOOL.address,
     DAO
   );
-  distributeRewardTransactionResponse.wait(1);
+  await distributeRewardTransactionResponse.wait(1);
 
   console.log(`(tx: ${distributeRewardTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -61,7 +61,7 @@ async function main() {
   const transferOperatorTransactionResponse = await SNOW.transferOperator(
     TREASURY.address
   );
-  transferOperatorTransactionResponse.wait(1);
+  await transferOperatorTransactionResponse.wait(1);
 
   console.log(`(tx: ${transferOperatorTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -71,7 +71,7 @@ async function main() {
   console.log("renounce ownership of $SNOW...");
 
   const renounceOwnershipTransactionResponse = await SNOW.renounceOwnership();
-  renounceOwnershipTransactionResponse.wait(1);
+  await renounceOwnershipTransactionResponse.wait(1);
 
   console.log(`(tx: ${renounceOwnershipTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");

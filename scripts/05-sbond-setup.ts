@@ -14,7 +14,7 @@ async function main() {
   const transferOperatorTransactionResponse = await SBOND.transferOperator(
     TREASURY.address
   );
-  transferOperatorTransactionResponse.wait(1);
+  await transferOperatorTransactionResponse.wait(1);
 
   console.log(`(tx: ${transferOperatorTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -24,7 +24,7 @@ async function main() {
   console.log("renounce ownership of $SBOND...");
 
   const renounceOwnershipTransactionResponse = await SBOND.renounceOwnership();
-  renounceOwnershipTransactionResponse.wait(1);
+  await renounceOwnershipTransactionResponse.wait(1);
 
   console.log(`(tx: ${renounceOwnershipTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");

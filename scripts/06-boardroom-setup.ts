@@ -18,7 +18,7 @@ async function main() {
     GLCR.address,
     TREASURY.address
   );
-  initializinTransactionResponse.wait(1);
+  await initializinTransactionResponse.wait(1);
   console.log(`(tx: ${initializinTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
@@ -29,7 +29,7 @@ async function main() {
   const setOperatorTransactionResponse = await BOARDROOM.setOperator(
     TREASURY.address
   );
-  setOperatorTransactionResponse.wait(1);
+  await setOperatorTransactionResponse.wait(1);
 
   console.log(`(tx: ${setOperatorTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");

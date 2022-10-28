@@ -16,7 +16,7 @@ async function main() {
 
   const setIsFeeOnTransferSnowTransactionResponse =
     await ZAP.setIsFeeOnTransfer(SNOW.address);
-  setIsFeeOnTransferSnowTransactionResponse.wait(1);
+  await setIsFeeOnTransferSnowTransactionResponse.wait(1);
 
   console.log(`(tx: ${setIsFeeOnTransferSnowTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -27,7 +27,7 @@ async function main() {
 
   const setIsFeeOnTransferGlcrTransactionResponse =
     await ZAP.setIsFeeOnTransfer(GLCR.address);
-  setIsFeeOnTransferGlcrTransactionResponse.wait(1);
+  await setIsFeeOnTransferGlcrTransactionResponse.wait(1);
 
   console.log(`(tx: ${setIsFeeOnTransferGlcrTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");

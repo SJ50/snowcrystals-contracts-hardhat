@@ -49,7 +49,7 @@ async function main() {
     false,
     0
   );
-  addUsdcSnowLPTransactionResponse.wait(1);
+  await addUsdcSnowLPTransactionResponse.wait(1);
 
   console.log(`(tx: ${addUsdcSnowLPTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -64,7 +64,7 @@ async function main() {
     false,
     0
   );
-  addUsdcGlcrLPTransactionResponse.wait(1);
+  await addUsdcGlcrLPTransactionResponse.wait(1);
 
   console.log(`(tx: ${addUsdcGlcrLPTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -79,7 +79,7 @@ async function main() {
     false,
     0
   );
-  addSbondTransactionResponse.wait(1);
+  await addSbondTransactionResponse.wait(1);
 
   console.log(`(tx: ${addSbondTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");

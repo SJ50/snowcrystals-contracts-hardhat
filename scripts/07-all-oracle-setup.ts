@@ -30,7 +30,7 @@ async function main() {
   console.log("updating Treasury Oracle...");
 
   const updateOracleTransactionResponse = await ORACLE.update();
-  updateOracleTransactionResponse.wait(1);
+  await updateOracleTransactionResponse.wait(1);
 
   console.log(`(tx: ${updateOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -41,7 +41,7 @@ async function main() {
 
   const transferOperatorOracleTransactionResponse =
     await ORACLE.transferOperator(TREASURY.address);
-  transferOperatorOracleTransactionResponse.wait(1);
+  await transferOperatorOracleTransactionResponse.wait(1);
 
   console.log(`(tx: ${transferOperatorOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -51,7 +51,7 @@ async function main() {
   console.log("updating SnowOracle...");
 
   const updateSnowOracleTransactionResponse = await SNOW_ORACLE.update();
-  updateSnowOracleTransactionResponse.wait(1);
+  await updateSnowOracleTransactionResponse.wait(1);
 
   console.log(`(tx: ${updateSnowOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -62,7 +62,7 @@ async function main() {
 
   const transferOperatorSnowOracleTransactionResponse =
     await SNOW_ORACLE.transferOperator(TAXOFFICE.address);
-  transferOperatorSnowOracleTransactionResponse.wait(1);
+  await transferOperatorSnowOracleTransactionResponse.wait(1);
 
   console.log(`(tx: ${transferOperatorSnowOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
@@ -72,7 +72,7 @@ async function main() {
   console.log("updating GlcrOracle...");
 
   const updateGlcrOracleTransactionResponse = await GLCR_ORACLE.update();
-  updateGlcrOracleTransactionResponse.wait(1);
+  await updateGlcrOracleTransactionResponse.wait(1);
   console.log(`(tx: ${updateGlcrOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
@@ -82,7 +82,7 @@ async function main() {
 
   const transferOperatorGlcrOracleTransactionResponse =
     await GLCR_ORACLE.transferOperator(TAXOFFICE.address);
-  transferOperatorGlcrOracleTransactionResponse.wait(1);
+  await transferOperatorGlcrOracleTransactionResponse.wait(1);
 
   console.log(`(tx: ${transferOperatorGlcrOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");

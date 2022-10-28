@@ -60,9 +60,13 @@ const addLiquidity = async (
       deployer,
       timestampBefore + 300
     );
-    addLiqudityTransactionResponse.wait(1);
-    console.log(addLiqudityTransactionResponse);
-    getPair = await UniswapV2Factory.getPair(tokenA.address, tokenB.address);
+    const addLiqudityTransactionReceipt =
+      await addLiqudityTransactionResponse.wait(1);
+    console.log(addLiqudityTransactionReceipt);
+    while (getPair === "0x0000000000000000000000000000000000000000") {
+      console.log("getting pair..");
+      getPair = await UniswapV2Factory.getPair(tokenA.address, tokenB.address);
+    }
   }
 
   return getPair;

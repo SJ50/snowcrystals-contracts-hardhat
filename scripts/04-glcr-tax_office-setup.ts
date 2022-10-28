@@ -1,6 +1,6 @@
 import { ethers, network, getNamedAccounts } from "hardhat";
 import {
-  IERC20,
+  IERC20Token,
   Glcr,
   TaxOfficeV3,
   Boardroom,
@@ -32,7 +32,7 @@ async function main() {
       ? dev
       : networkConfig[network.name].dev!;
 
-  const USDC: IERC20 = mocksDeploymentChains.includes(network.name)
+  const USDC: IERC20Token = mocksDeploymentChains.includes(network.name)
     ? await ethers.getContract("Mock USDC", deployer)
     : await ethers.getContractAt(
         "IERC20",
@@ -72,7 +72,7 @@ async function main() {
 
   const setShareTokenStaticTaxRateTransactionResponse =
     await TAXOFFICE.setShareTokenStaticTaxRate(2500);
-  setShareTokenStaticTaxRateTransactionResponse.wait(1);
+  await setShareTokenStaticTaxRateTransactionResponse.wait(1);
   console.log(`(tx: ${setShareTokenStaticTaxRateTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
@@ -87,7 +87,7 @@ async function main() {
       BOARDROOM.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setShareTokenWhitelistTypeBoardRoomTransactionResponse.wait(1);
+  await setShareTokenWhitelistTypeBoardRoomTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setShareTokenWhitelistTypeBoardRoomTransactionResponse.hash})...`
@@ -105,7 +105,7 @@ async function main() {
       USDC_GLCR_LP_ADDRESS,
       1 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setShareTokenWhitelistTypeGlcrLPTransactionResponse.wait(1);
+  await setShareTokenWhitelistTypeGlcrLPTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setShareTokenWhitelistTypeGlcrLPTransactionResponse.hash})...`
@@ -123,7 +123,7 @@ async function main() {
       ZAP.address,
       1 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setShareTokenWhitelistTypeZapTransactionResponse.wait(1);
+  await setShareTokenWhitelistTypeZapTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setShareTokenWhitelistTypeZapTransactionResponse.hash})...`
@@ -141,7 +141,7 @@ async function main() {
       TAXOFFICE.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setShareTokenWhitelistTypeTaxOfficeTransactionResponse.wait(1);
+  await setShareTokenWhitelistTypeTaxOfficeTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setShareTokenWhitelistTypeTaxOfficeTransactionResponse.hash})...`
@@ -159,7 +159,7 @@ async function main() {
       WRAPPED_ROUTER.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setShareTokenWhitelistTypeWrappedRouterTransactionResponse.wait(1);
+  await setShareTokenWhitelistTypeWrappedRouterTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setShareTokenWhitelistTypeWrappedRouterTransactionResponse.hash})...`
@@ -177,7 +177,9 @@ async function main() {
       DAO_GLCR_REBATE_TREASURY.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setShareTokenWhitelistTypeDaoGlcrRebateTreasuryTransactionResponse.wait(1);
+  await setShareTokenWhitelistTypeDaoGlcrRebateTreasuryTransactionResponse.wait(
+    1
+  );
 
   console.log(
     `(tx: ${setShareTokenWhitelistTypeDaoGlcrRebateTreasuryTransactionResponse.hash})...`
@@ -195,7 +197,9 @@ async function main() {
       DEV_GLCR_REBATE_TREASURY.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setShareTokenWhitelistTypeDevGlcrRebateTreasuryTransactionResponse.wait(1);
+  await setShareTokenWhitelistTypeDevGlcrRebateTreasuryTransactionResponse.wait(
+    1
+  );
 
   console.log(
     `(tx: ${setShareTokenWhitelistTypeDevGlcrRebateTreasuryTransactionResponse.hash})...`
@@ -213,7 +217,7 @@ async function main() {
       TREASURY.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setShareTokenWhitelistTypeTreasuryTransactionResponse.wait(1);
+  await setShareTokenWhitelistTypeTreasuryTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setShareTokenWhitelistTypeTreasuryTransactionResponse.hash})...`
@@ -231,7 +235,7 @@ async function main() {
       DAO,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setShareTokenWhitelistTypeDaoTransactionResponse.wait(1);
+  await setShareTokenWhitelistTypeDaoTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setShareTokenWhitelistTypeDaoTransactionResponse.hash})...`
@@ -249,7 +253,7 @@ async function main() {
       DEV,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setShareTokenWhitelistTypeDevTransactionResponse.wait(1);
+  await setShareTokenWhitelistTypeDevTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setShareTokenWhitelistTypeDevTransactionResponse.hash})...`

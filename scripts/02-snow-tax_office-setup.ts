@@ -72,7 +72,7 @@ async function main() {
 
   const setMainTokenStaticTaxRateTransactionResponse =
     await TAXOFFICE.setMainTokenStaticTaxRate(2500);
-  setMainTokenStaticTaxRateTransactionResponse.wait(1);
+  await setMainTokenStaticTaxRateTransactionResponse.wait(1);
   console.log(`(tx: ${setMainTokenStaticTaxRateTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
@@ -87,7 +87,7 @@ async function main() {
       BOARDROOM.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeBoardRoomTransactionResponse.wait(1);
+  await setMainTokenWhitelistTypeBoardRoomTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setMainTokenWhitelistTypeBoardRoomTransactionResponse.hash})...`
@@ -105,7 +105,7 @@ async function main() {
       USDC_SNOW_LP_ADDRESS,
       1 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeSnowLPTransactionResponse.wait(1);
+  await setMainTokenWhitelistTypeSnowLPTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setMainTokenWhitelistTypeSnowLPTransactionResponse.hash})...`
@@ -123,7 +123,7 @@ async function main() {
       ZAP.address,
       1 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeZapTransactionResponse.wait(1);
+  await setMainTokenWhitelistTypeZapTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setMainTokenWhitelistTypeZapTransactionResponse.hash})...`
@@ -141,7 +141,7 @@ async function main() {
       TAXOFFICE.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeTaxOfficeTransactionResponse.wait(1);
+  await setMainTokenWhitelistTypeTaxOfficeTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setMainTokenWhitelistTypeTaxOfficeTransactionResponse.hash})...`
@@ -159,7 +159,7 @@ async function main() {
       WRAPPED_ROUTER.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeWrappedRouterTransactionResponse.wait(1);
+  await setMainTokenWhitelistTypeWrappedRouterTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setMainTokenWhitelistTypeWrappedRouterTransactionResponse.hash})...`
@@ -177,7 +177,9 @@ async function main() {
       DAO_SNOW_REBATE_TREASURY.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeDaoSnowRebateTreasuryTransactionResponse.wait(1);
+  await setMainTokenWhitelistTypeDaoSnowRebateTreasuryTransactionResponse.wait(
+    1
+  );
 
   console.log(
     `(tx: ${setMainTokenWhitelistTypeDaoSnowRebateTreasuryTransactionResponse.hash})...`
@@ -195,7 +197,9 @@ async function main() {
       DEV_SNOW_REBATE_TREASURY.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeDevSnowRebateTreasuryTransactionResponse.wait(1);
+  await setMainTokenWhitelistTypeDevSnowRebateTreasuryTransactionResponse.wait(
+    1
+  );
 
   console.log(
     `(tx: ${setMainTokenWhitelistTypeDevSnowRebateTreasuryTransactionResponse.hash})...`
@@ -213,7 +217,7 @@ async function main() {
       TREASURY.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeTreasuryTransactionResponse.wait(1);
+  await setMainTokenWhitelistTypeTreasuryTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setMainTokenWhitelistTypeTreasuryTransactionResponse.hash})...`
@@ -231,7 +235,7 @@ async function main() {
       DAO,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeDaoTransactionResponse.wait(1);
+  await setMainTokenWhitelistTypeDaoTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setMainTokenWhitelistTypeDaoTransactionResponse.hash})...`
@@ -249,7 +253,7 @@ async function main() {
       DEV,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
-  setMainTokenWhitelistTypeDevTransactionResponse.wait(1);
+  await setMainTokenWhitelistTypeDevTransactionResponse.wait(1);
 
   console.log(
     `(tx: ${setMainTokenWhitelistTypeDevTransactionResponse.hash})...`
