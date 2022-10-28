@@ -24,7 +24,12 @@ const snowCrystalsDaoGlcrRebateTreasury: DeployFunction = async function (
     deployer
   );
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
-
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
   log(`
 ----------------------------------------------------`);
   log("Deploying DAO_GLCR_REBATE_TREASURY and waiting for confirmations...");

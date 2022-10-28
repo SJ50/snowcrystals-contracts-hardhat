@@ -21,7 +21,12 @@ const snowCrystalsGlcrRewardPool: DeployFunction = async function (
   const glcrRewardPoolStartTime = await glcrStartTime(network.name);
 
   const GLCR: Glcr = await ethers.getContract("Glcr", deployer);
-
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
   log(`
 ----------------------------------------------------`);
   log("Deploying GLCR_REWARD_POOL and waiting for confirmations...");

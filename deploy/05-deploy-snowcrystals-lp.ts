@@ -9,7 +9,12 @@ const snowCrystalsLP: DeployFunction = async function (
 ) {
   const { getNamedAccounts, network, ethers } = hre;
   const { deployer } = await getNamedAccounts();
-
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
   console.log(`
 ----------------------------------------------------`);
   console.log("Remote/fork chain detected! Deploying liquidity...");

@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { mocksDeploymentChains } from "../helper-hardhat-config";
+import { mocksDeploymentChains, networkConfig } from "../helper-hardhat-config";
 
 const deployMocks: DeployFunction = async function (
   hre: HardhatRuntimeEnvironment
@@ -8,6 +8,13 @@ const deployMocks: DeployFunction = async function (
   const { deployments, getNamedAccounts, network, ethers } = hre;
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
+
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
 
   // If we are on a local development network, we need to deploy mocks!
   if (mocksDeploymentChains.includes(network.name)) {

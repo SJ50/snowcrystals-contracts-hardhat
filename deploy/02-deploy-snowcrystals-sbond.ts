@@ -12,6 +12,12 @@ const snowCrystalsSbond: DeployFunction = async function (
 
   const bondtoken_name = "snowcrystals.finance BOND";
   const bondtoken_symbol = "SBOND";
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
 
   log(`
 ----------------------------------------------------`);

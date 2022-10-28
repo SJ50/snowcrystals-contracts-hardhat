@@ -26,6 +26,12 @@ const snowCrystalsGlcr: DeployFunction = async function (
       ? dev
       : networkConfig[network.name].dev!;
 
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
   log(`
 ----------------------------------------------------`);
   log("Deploying $GLCR and waiting for confirmations...");

@@ -9,7 +9,12 @@ const snowCrystalsUsdcOracle: DeployFunction = async function (
   const { getNamedAccounts, deployments, network } = hre;
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
-
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
   log(`
 ----------------------------------------------------`);
   log("Deploying USDC_ORACLE and waiting for confirmations...");

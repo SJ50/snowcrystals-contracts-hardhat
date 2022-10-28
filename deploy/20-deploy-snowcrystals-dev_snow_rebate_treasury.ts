@@ -21,7 +21,12 @@ const snowCrystalsDevSnowRebateTreasury: DeployFunction = async function (
   const SNOW: Snow = await ethers.getContract("Snow", deployer);
   const TREASURY_ORACLE: Oracle = await ethers.getContract("Oracle", deployer);
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
-
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
   log(`
 ----------------------------------------------------`);
   log("Deploying DEV_SNOW_REBATE_TREASURY and waiting for confirmations...");

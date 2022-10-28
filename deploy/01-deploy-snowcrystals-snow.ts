@@ -13,6 +13,13 @@ const snowCrystalsSnow: DeployFunction = async function (
   const maintoken_name = "snowcrystals.finance";
   const maintoken_symbol = "SNOW";
 
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
+
   log(`
 ----------------------------------------------------`);
   log("Deploying $SNOW and waiting for confirmations...");

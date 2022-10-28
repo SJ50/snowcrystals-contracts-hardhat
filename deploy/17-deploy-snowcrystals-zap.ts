@@ -19,7 +19,12 @@ const snowCrystalsZap: DeployFunction = async function (
         networkConfig[network.name].usdc!,
         deployer
       );
-
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
   log(`
 ----------------------------------------------------`);
   log("Deploying ZAP and waiting for confirmations...");

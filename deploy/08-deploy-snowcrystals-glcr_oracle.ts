@@ -31,7 +31,12 @@ const snowCrystalsGlcrOracle: DeployFunction = async function (
     ethers.BigNumber.from(1 * 10 ** 6),
     ethers.utils.parseEther("1")
   );
-
+  if (
+    Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
+    Math.round(Date.now() / 1000)
+  ) {
+    throw new Error("check dappStartTime in helper-hardhat-config");
+  }
   log(`
 ----------------------------------------------------`);
   log("Deploying GLCR_ORACLE and waiting for confirmations...");
