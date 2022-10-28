@@ -3,7 +3,7 @@ import { DeployFunction } from "hardhat-deploy/types";
 import { Snow, IERC20Token } from "../typechain-types";
 import verify from "../utils/verify";
 import addLiqudity from "../utils/addLiquidity";
-
+import utcSnowCrystalsStartTimeEpoch from "../utils/startTime";
 import { networkConfig, mocksDeploymentChains } from "../helper-hardhat-config";
 
 const snowCrystalsSnowOracle: DeployFunction = async function (
@@ -15,7 +15,9 @@ const snowCrystalsSnowOracle: DeployFunction = async function (
 
   const currentTimestampInSeconds = Math.round(Date.now() / 1000); // local timezone
   const oraclePeriod = 6 * 60 * 60; // 6 hours in seconds
-  const oracleStartTime = currentTimestampInSeconds + 600;
+  const oracleStartTime = Number(
+    await utcSnowCrystalsStartTimeEpoch(network.name)
+  );
 
   const USDC: IERC20Token = mocksDeploymentChains.includes(network.name)
     ? await ethers.getContract("Mock USDC", deployer)

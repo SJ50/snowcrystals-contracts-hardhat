@@ -4,6 +4,7 @@ import { IERC20Token, Glcr } from "../typechain-types";
 import verify from "../utils/verify";
 import addLiqudity from "../utils/addLiquidity";
 import { networkConfig, mocksDeploymentChains } from "../helper-hardhat-config";
+import utcSnowCrystalsStartTimeEpoch from "../utils/startTime";
 
 const snowCrystalsGlcrOracle: DeployFunction = async function (
   hre: HardhatRuntimeEnvironment
@@ -14,7 +15,9 @@ const snowCrystalsGlcrOracle: DeployFunction = async function (
 
   const currentTimestampInSeconds = Math.round(Date.now() / 1000); // local timezone
   const oraclePeriod = 6 * 60 * 60;
-  const oracleStartTime = currentTimestampInSeconds + 600;
+  const oracleStartTime = Number(
+    await utcSnowCrystalsStartTimeEpoch(network.name)
+  );
 
   const USDC: IERC20Token = mocksDeploymentChains.includes(network.name)
     ? await ethers.getContract("Mock USDC", deployer)
