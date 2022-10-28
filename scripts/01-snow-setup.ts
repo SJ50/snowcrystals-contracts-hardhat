@@ -1,4 +1,4 @@
-import { ethers, run, network, getNamedAccounts } from "hardhat";
+import { ethers, network, getNamedAccounts } from "hardhat";
 import {
   Snow,
   TaxOfficeV3,
@@ -8,18 +8,12 @@ import {
 import { networkConfig, developmentChains } from "../helper-hardhat-config";
 
 async function main() {
-  const { deployer, dao, dev } = await getNamedAccounts();
+  const { deployer, dao } = await getNamedAccounts();
   const DAO: string =
     developmentChains.includes(network.name) ||
     networkConfig[network.name].dao === undefined
       ? dao
       : networkConfig[network.name].dao!;
-
-  let DEV: string =
-    developmentChains.includes(network.name) ||
-    networkConfig[network.name].dev === undefined
-      ? dev
-      : networkConfig[network.name].dev!;
 
   const SNOW: Snow = await ethers.getContract("Snow", deployer);
   const TAXOFFICE: TaxOfficeV3 = await ethers.getContract(
