@@ -48,7 +48,6 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("initializing Treasury...");
-
   const initializeTransactionResponse = await TREASURY.initialize(
     SNOW.address,
     SBOND.address,
@@ -66,7 +65,6 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("set Funding to DAO and DEV..");
-
   const setExtraFundsTransactionResponse = await TREASURY.setExtraFunds(
     DAO,
     3000,
@@ -74,18 +72,15 @@ async function main() {
     800
   );
   await setExtraFundsTransactionResponse.wait(1);
-
   console.log(`(tx: ${setExtraFundsTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
   console.log("setting TREASURY as $SNOW operator...");
-
   const setMintingFactorForPayingDebtTransactionResponse =
     await TREASURY.setMintingFactorForPayingDebt(15000);
   await setMintingFactorForPayingDebtTransactionResponse.wait(1);
-
   console.log(
     `(tx: ${setMintingFactorForPayingDebtTransactionResponse.hash})...`
   );

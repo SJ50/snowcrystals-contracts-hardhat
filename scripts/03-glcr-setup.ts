@@ -23,7 +23,6 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("setting taxoffice for $GLCR...");
-
   const setTaxOfficeTransactionResponse = await GLCR.setTaxOffice(
     TAXOFFICE.address
   );
@@ -34,34 +33,28 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("funding $GLCR rewardpool...");
-
   const distributeRewardTransactionResponse = await GLCR.distributeReward(
     GLCR_REWARDPOOL.address
   );
   await distributeRewardTransactionResponse.wait(1);
-
   console.log(`(tx: ${distributeRewardTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
   console.log("setting TREASURY as $GLCR operator...");
-
   const transferOperatorTransactionResponse = await GLCR.transferOperator(
     TREASURY.address
   );
   await transferOperatorTransactionResponse.wait(1);
-
   console.log(`(tx: ${transferOperatorTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
   console.log("renounce ownership of $GLCR...");
-
   const renounceOwnershipTransactionResponse = await GLCR.renounceOwnership();
   await renounceOwnershipTransactionResponse.wait(1);
-
   console.log(`(tx: ${renounceOwnershipTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 

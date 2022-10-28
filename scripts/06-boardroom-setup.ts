@@ -12,7 +12,6 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("Initializing Boardroom...");
-
   const initializinTransactionResponse = await BOARDROOM.initialize(
     SNOW.address,
     GLCR.address,
@@ -25,12 +24,10 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("set Treasury as Boardroom operator...");
-
   const setOperatorTransactionResponse = await BOARDROOM.setOperator(
     TREASURY.address
   );
   await setOperatorTransactionResponse.wait(1);
-
   console.log(`(tx: ${setOperatorTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 

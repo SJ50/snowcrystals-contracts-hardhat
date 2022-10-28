@@ -42,7 +42,6 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("adding USDC-SNOW-LP to GlcrRewardPool...");
-
   const addUsdcSnowLPTransactionResponse = await GLCR_REWARDPOOL.add(
     12900,
     USDC_SNOW_LP_ADDRESS,
@@ -50,14 +49,12 @@ async function main() {
     0
   );
   await addUsdcSnowLPTransactionResponse.wait(1);
-
   console.log(`(tx: ${addUsdcSnowLPTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
   console.log("adding USDC-GLCR-LP to GlcrRewardPool...");
-
   const addUsdcGlcrLPTransactionResponse = await GLCR_REWARDPOOL.add(
     8600,
     USDC_GLCR_LP_ADDRESS,
@@ -65,14 +62,12 @@ async function main() {
     0
   );
   await addUsdcGlcrLPTransactionResponse.wait(1);
-
   console.log(`(tx: ${addUsdcGlcrLPTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
   console.log("adding $SBOND to GlcrRewardPool...");
-
   const addSbondTransactionResponse = await GLCR_REWARDPOOL.add(
     0,
     SBOND.address,
@@ -80,7 +75,6 @@ async function main() {
     0
   );
   await addSbondTransactionResponse.wait(1);
-
   console.log(`(tx: ${addSbondTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 }

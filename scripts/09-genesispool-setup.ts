@@ -43,35 +43,35 @@ async function main() {
         deployer
       );
 
-  console.log(`
-----------------------------------------------------`);
-  console.log("adding WBTC to genesispool...");
+  //   console.log(`
+  // ----------------------------------------------------`);
+  //   console.log("adding WBTC to genesispool...");
 
-  const addWbtcTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
-    2400,
-    WBTC.address,
-    false,
-    0
-  );
-  await addWbtcTransactionResponse.wait(1);
+  //   const addWbtcTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
+  //     2400,
+  //     WBTC.address,
+  //     false,
+  //     0
+  //   );
+  //   await addWbtcTransactionResponse.wait(1);
 
-  console.log(`(tx: ${addWbtcTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
+  //   console.log(`(tx: ${addWbtcTransactionResponse.hash})...`);
+  //   console.log("----------------------------------------------------");
 
-  console.log(`
-----------------------------------------------------`);
-  console.log("adding WCRO to genesispool...");
+  //   console.log(`
+  // ----------------------------------------------------`);
+  //   console.log("adding WCRO to genesispool...");
 
-  const addWcroTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
-    2400,
-    WCRO.address,
-    false,
-    0
-  );
-  await addWcroTransactionResponse.wait(1);
+  //   const addWcroTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
+  //     2400,
+  //     WCRO.address,
+  //     false,
+  //     0
+  //   );
+  //   await addWcroTransactionResponse.wait(1);
 
-  console.log(`(tx: ${addWcroTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
+  //   console.log(`(tx: ${addWcroTransactionResponse.hash})...`);
+  //   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);

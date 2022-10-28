@@ -28,49 +28,40 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("updating Treasury Oracle...");
-
   const updateOracleTransactionResponse = await ORACLE.update();
   await updateOracleTransactionResponse.wait(1);
-
   console.log(`(tx: ${updateOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
   console.log("setting Treasury as Oracle operator...");
-
   const transferOperatorOracleTransactionResponse =
     await ORACLE.transferOperator(TREASURY.address);
   await transferOperatorOracleTransactionResponse.wait(1);
-
   console.log(`(tx: ${transferOperatorOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
   console.log("updating SnowOracle...");
-
   const updateSnowOracleTransactionResponse = await SNOW_ORACLE.update();
   await updateSnowOracleTransactionResponse.wait(1);
-
   console.log(`(tx: ${updateSnowOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
   console.log("setting TaxOffice as SnowOracle operator...");
-
   const transferOperatorSnowOracleTransactionResponse =
     await SNOW_ORACLE.transferOperator(TAXOFFICE.address);
   await transferOperatorSnowOracleTransactionResponse.wait(1);
-
   console.log(`(tx: ${transferOperatorSnowOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
   console.log("updating GlcrOracle...");
-
   const updateGlcrOracleTransactionResponse = await GLCR_ORACLE.update();
   await updateGlcrOracleTransactionResponse.wait(1);
   console.log(`(tx: ${updateGlcrOracleTransactionResponse.hash})...`);
@@ -79,11 +70,9 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("setting TaxOffice as GlcrOracle operator...");
-
   const transferOperatorGlcrOracleTransactionResponse =
     await GLCR_ORACLE.transferOperator(TAXOFFICE.address);
   await transferOperatorGlcrOracleTransactionResponse.wait(1);
-
   console.log(`(tx: ${transferOperatorGlcrOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 }

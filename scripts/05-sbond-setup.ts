@@ -10,22 +10,18 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("setting TREASURY as $SBOND operator...");
-
   const transferOperatorTransactionResponse = await SBOND.transferOperator(
     TREASURY.address
   );
   await transferOperatorTransactionResponse.wait(1);
-
   console.log(`(tx: ${transferOperatorTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
   console.log("renounce ownership of $SBOND...");
-
   const renounceOwnershipTransactionResponse = await SBOND.renounceOwnership();
   await renounceOwnershipTransactionResponse.wait(1);
-
   console.log(`(tx: ${renounceOwnershipTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 

@@ -1,6 +1,6 @@
 import { ethers, network, getNamedAccounts } from "hardhat";
 import {
-  IERC20,
+  IERC20Token,
   Snow,
   TaxOfficeV3,
   Boardroom,
@@ -32,10 +32,10 @@ async function main() {
       ? dev
       : networkConfig[network.name].dev!;
 
-  const USDC: IERC20 = mocksDeploymentChains.includes(network.name)
+  const USDC: IERC20Token = mocksDeploymentChains.includes(network.name)
     ? await ethers.getContract("Mock USDC", deployer)
     : await ethers.getContractAt(
-        "IERC20",
+        "IERC20Token",
         networkConfig[network.name].usdc!,
         deployer
       );
@@ -69,7 +69,6 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("setting $SNOW static tax rate to 25%...");
-
   const setMainTokenStaticTaxRateTransactionResponse =
     await TAXOFFICE.setMainTokenStaticTaxRate(2500);
   await setMainTokenStaticTaxRateTransactionResponse.wait(1);
@@ -81,14 +80,12 @@ async function main() {
   console.log(
     "excluding BoardRoom as BOTH from tax to make claiming $SNOW taxfree..."
   );
-
   const setMainTokenWhitelistTypeBoardRoomTransactionResponse =
     await TAXOFFICE.setMainTokenWhitelistType(
       BOARDROOM.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
   await setMainTokenWhitelistTypeBoardRoomTransactionResponse.wait(1);
-
   console.log(
     `(tx: ${setMainTokenWhitelistTypeBoardRoomTransactionResponse.hash})...`
   );
@@ -99,14 +96,12 @@ async function main() {
   console.log(
     "excluding Usdc-Snow-LP as SENDER only from tax to make buying $SNOW taxfree..."
   );
-
   const setMainTokenWhitelistTypeSnowLPTransactionResponse =
     await TAXOFFICE.setMainTokenWhitelistType(
       USDC_SNOW_LP_ADDRESS,
       1 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
   await setMainTokenWhitelistTypeSnowLPTransactionResponse.wait(1);
-
   console.log(
     `(tx: ${setMainTokenWhitelistTypeSnowLPTransactionResponse.hash})...`
   );
@@ -117,14 +112,12 @@ async function main() {
   console.log(
     "excluding Zap as SENDER only from tax to make $SNOW properly taxed..."
   );
-
   const setMainTokenWhitelistTypeZapTransactionResponse =
     await TAXOFFICE.setMainTokenWhitelistType(
       ZAP.address,
       1 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
   await setMainTokenWhitelistTypeZapTransactionResponse.wait(1);
-
   console.log(
     `(tx: ${setMainTokenWhitelistTypeZapTransactionResponse.hash})...`
   );
@@ -135,14 +128,12 @@ async function main() {
   console.log(
     "excluding TaxOffice as BOTH from tax to make $SNOW tax loop free..."
   );
-
   const setMainTokenWhitelistTypeTaxOfficeTransactionResponse =
     await TAXOFFICE.setMainTokenWhitelistType(
       TAXOFFICE.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
   await setMainTokenWhitelistTypeTaxOfficeTransactionResponse.wait(1);
-
   console.log(
     `(tx: ${setMainTokenWhitelistTypeTaxOfficeTransactionResponse.hash})...`
   );
@@ -153,14 +144,12 @@ async function main() {
   console.log(
     "excluding WrappedRouter as BOTH from tax to making LP tax free..."
   );
-
   const setMainTokenWhitelistTypeWrappedRouterTransactionResponse =
     await TAXOFFICE.setMainTokenWhitelistType(
       WRAPPED_ROUTER.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
   await setMainTokenWhitelistTypeWrappedRouterTransactionResponse.wait(1);
-
   console.log(
     `(tx: ${setMainTokenWhitelistTypeWrappedRouterTransactionResponse.hash})...`
   );
@@ -171,7 +160,6 @@ async function main() {
   console.log(
     "excluding DaoSnowRebateTreasury as BOTH from tax to send and claim $SNOW tax free..."
   );
-
   const setMainTokenWhitelistTypeDaoSnowRebateTreasuryTransactionResponse =
     await TAXOFFICE.setMainTokenWhitelistType(
       DAO_SNOW_REBATE_TREASURY.address,
@@ -180,7 +168,6 @@ async function main() {
   await setMainTokenWhitelistTypeDaoSnowRebateTreasuryTransactionResponse.wait(
     1
   );
-
   console.log(
     `(tx: ${setMainTokenWhitelistTypeDaoSnowRebateTreasuryTransactionResponse.hash})...`
   );
@@ -191,7 +178,6 @@ async function main() {
   console.log(
     "excluding DevSnowRebateTreasury as BOTH from tax to send and claim $SNOW tax free..."
   );
-
   const setMainTokenWhitelistTypeDevSnowRebateTreasuryTransactionResponse =
     await TAXOFFICE.setMainTokenWhitelistType(
       DEV_SNOW_REBATE_TREASURY.address,
@@ -200,7 +186,6 @@ async function main() {
   await setMainTokenWhitelistTypeDevSnowRebateTreasuryTransactionResponse.wait(
     1
   );
-
   console.log(
     `(tx: ${setMainTokenWhitelistTypeDevSnowRebateTreasuryTransactionResponse.hash})...`
   );
@@ -211,14 +196,12 @@ async function main() {
   console.log(
     "excluding Treasury as BOTH from tax to send and claim $SNOW tax free..."
   );
-
   const setMainTokenWhitelistTypeTreasuryTransactionResponse =
     await TAXOFFICE.setMainTokenWhitelistType(
       TREASURY.address,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
   await setMainTokenWhitelistTypeTreasuryTransactionResponse.wait(1);
-
   console.log(
     `(tx: ${setMainTokenWhitelistTypeTreasuryTransactionResponse.hash})...`
   );
@@ -229,14 +212,12 @@ async function main() {
   console.log(
     "excluding DAO as BOTH from tax to send and claim $SNOW tax free..."
   );
-
   const setMainTokenWhitelistTypeDaoTransactionResponse =
     await TAXOFFICE.setMainTokenWhitelistType(
       DAO,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
   await setMainTokenWhitelistTypeDaoTransactionResponse.wait(1);
-
   console.log(
     `(tx: ${setMainTokenWhitelistTypeDaoTransactionResponse.hash})...`
   );
@@ -247,14 +228,12 @@ async function main() {
   console.log(
     "excluding DEV as BOTH from tax to send and claim $SNOW tax free..."
   );
-
   const setMainTokenWhitelistTypeDevTransactionResponse =
     await TAXOFFICE.setMainTokenWhitelistType(
       DEV,
       3 //  0 = NONE, 1 = SENDER, 2 = RECIPIENT, 3 = BOTH
     );
   await setMainTokenWhitelistTypeDevTransactionResponse.wait(1);
-
   console.log(
     `(tx: ${setMainTokenWhitelistTypeDevTransactionResponse.hash})...`
   );

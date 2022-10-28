@@ -28,7 +28,6 @@ async function main() {
   console.log(`
 ----------------------------------------------------`);
   console.log("setting $USDC as asset in DaoGlcrRebateTreasury...");
-
   const setAssetTransactionResponse = await DAO_GLCR_REBATE_TREASURY.setAsset(
     USDC.address,
     true,
@@ -38,7 +37,6 @@ async function main() {
     "0x0000000000000000000000000000000000000000"
   );
   await setAssetTransactionResponse.wait(1);
-
   console.log(`(tx: ${setAssetTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 }
