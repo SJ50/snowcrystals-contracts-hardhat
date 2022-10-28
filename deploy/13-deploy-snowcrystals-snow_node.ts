@@ -52,7 +52,14 @@ const snowCrystalsSnowNode: DeployFunction = async function (
     networkConfig[network.name].contractVerfication &&
     process.env.CRONOSCAN_TESTNET_API_KEY
   ) {
-    await verify(snowNode.address, [nodeStartTime, UsdcSnowLpAddress]);
+    log(
+      `hh verify --network ${network.name} --contract contracts/SnowNode.sol:SnowNode ${snowNode.address} ${nodeStartTime} ${UsdcSnowLpAddress}`
+    );
+    await verify(
+      snowNode.address,
+      [nodeStartTime, UsdcSnowLpAddress],
+      "SnowNode"
+    );
   }
   log(`SNOW_NODE deployed at ${snowNode.address}`);
   log("----------------------------------------------------");

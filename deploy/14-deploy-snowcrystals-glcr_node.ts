@@ -53,7 +53,14 @@ const snowCrystalsGlcrNode: DeployFunction = async function (
     networkConfig[network.name].contractVerfication &&
     process.env.CRONOSCAN_TESTNET_API_KEY
   ) {
-    await verify(glcrNode.address, [nodeStartTime, UsdcGlcrLpAddress]);
+    log(
+      `hh verify --network ${network.name} --contract contracts/SnowNode.sol:SnowNode ${glcrNode.address} ${nodeStartTime} ${UsdcGlcrLpAddress}`
+    );
+    await verify(
+      glcrNode.address,
+      [nodeStartTime, UsdcGlcrLpAddress],
+      "GlcrNode"
+    );
   }
   log(`GLCR_NODE deployed at ${glcrNode.address}`);
   log("----------------------------------------------------");

@@ -19,7 +19,7 @@ contract Oracle is Epoch {
 
     /* ========== STATE VARIABLES ========== */
     address public immutable snow;
-    uint144 public constant DECIMALS_MULTIPLER = 10**12; // USDC Decimals = 6
+    uint144 public constant DECIMALS_MULTIPLER = 1e12; // USDC Decimals = 6
     // uniswap
     address public immutable token0;
     address public immutable token1;

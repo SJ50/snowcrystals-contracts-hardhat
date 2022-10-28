@@ -2,10 +2,14 @@ import { getNamedAccounts, ethers, network } from "hardhat";
 import { networkConfig } from "../helper-hardhat-config";
 
 import { BigNumber } from "ethers";
-import { IUsdc, IUniswapV2Factory, IUniswapV2Router } from "../typechain-types";
+import {
+  IERC20Token,
+  IUniswapV2Factory,
+  IUniswapV2Router,
+} from "../typechain-types";
 
 const addLiquidity = async (
-  tokenA: IUsdc,
+  tokenA: IERC20Token,
   tokenB: any,
   amountADesired: BigNumber,
   amountBDesired: BigNumber
@@ -57,6 +61,7 @@ const addLiquidity = async (
       timestampBefore + 300
     );
     addLiqudityTransactionResponse.wait(1);
+    console.log(addLiqudityTransactionResponse);
     getPair = await UniswapV2Factory.getPair(tokenA.address, tokenB.address);
   }
 

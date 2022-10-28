@@ -52,12 +52,14 @@ const snowCrystalsTreasury: DeployFunction = async function (
     networkConfig[network.name].contractVerfication &&
     process.env.CRONOSCAN_TESTNET_API_KEY
   ) {
-    await verify(treasuryOracle.address, [
-      UsdcSnowLpAddress,
-      oraclePeriod,
-      oracleStartTime,
-      SNOW.address,
-    ]);
+    log(
+      `hh verify --network ${network.name} --contract contracts/Oracle.sol:Oracle ${treasuryOracle.address} ${UsdcSnowLpAddress} ${oraclePeriod} ${oracleStartTime} ${SNOW.address}`
+    );
+    await verify(
+      treasuryOracle.address,
+      [UsdcSnowLpAddress, oraclePeriod, oracleStartTime, SNOW.address],
+      "Oracle"
+    );
   }
   log(`TREASURY_ORACLE deployed at ${treasuryOracle.address}`);
   log("----------------------------------------------------");

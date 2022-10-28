@@ -32,7 +32,7 @@ const snowCrystalsLP: DeployFunction = async function (
   const UsdcSnowLpAddress: string = await addLiqudity(
     USDC,
     SNOW,
-    ethers.BigNumber.from(1 * 10 ** 6),
+    ethers.BigNumber.from(0.1 * 10 ** 6),
     ethers.utils.parseEther("1")
   );
   console.log(
@@ -42,7 +42,7 @@ const snowCrystalsLP: DeployFunction = async function (
   const UsdcGlcrLpAddress: string = await addLiqudity(
     USDC,
     GLCR,
-    ethers.BigNumber.from(1 * 10 ** 6),
+    ethers.BigNumber.from(0.001 * 10 ** 6),
     ethers.utils.parseEther("1")
   );
   console.log(
