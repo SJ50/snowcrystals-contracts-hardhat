@@ -32,7 +32,7 @@ const snowCrystalsGlcrOracle: DeployFunction = async function (
     USDC,
     GLCR,
     ethers.BigNumber.from(1 * 10 ** 6),
-    ethers.utils.parseEther("1")
+    ethers.utils.parseEther("0.0001") // 1 GLCR = 10000 USDC
   );
   if (
     Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <

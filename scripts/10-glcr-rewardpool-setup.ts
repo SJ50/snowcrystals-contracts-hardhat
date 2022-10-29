@@ -30,13 +30,13 @@ async function main() {
     USDC,
     SNOW,
     ethers.BigNumber.from(1 * 10 ** 6),
-    ethers.utils.parseEther("1")
+    ethers.utils.parseEther("0.01") // 1 SNOW = 100 USDC
   );
   const USDC_GLCR_LP_ADDRESS: string = await addLiqudity(
     USDC,
     GLCR,
     ethers.BigNumber.from(1 * 10 ** 6),
-    ethers.utils.parseEther("1")
+    ethers.utils.parseEther("0.0001") // 1 GLCR = 10000 USDC
   );
 
   console.log(`

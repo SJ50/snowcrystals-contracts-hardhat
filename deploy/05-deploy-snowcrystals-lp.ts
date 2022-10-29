@@ -32,8 +32,8 @@ const snowCrystalsLP: DeployFunction = async function (
   const UsdcSnowLpAddress: string = await addLiqudity(
     USDC,
     SNOW,
-    ethers.BigNumber.from(0.1 * 10 ** 6),
-    ethers.utils.parseEther("1")
+    ethers.BigNumber.from(1 * 10 ** 6),
+    ethers.utils.parseEther("0.01") // 1 SNOW = 100 USDC
   );
   console.log(
     `Liquidity Pair of $${await USDC.symbol()}-$${await SNOW.symbol()} deployed at ${UsdcSnowLpAddress}`
@@ -42,8 +42,8 @@ const snowCrystalsLP: DeployFunction = async function (
   const UsdcGlcrLpAddress: string = await addLiqudity(
     USDC,
     GLCR,
-    ethers.BigNumber.from(0.001 * 10 ** 6),
-    ethers.utils.parseEther("1")
+    ethers.BigNumber.from(1 * 10 ** 6),
+    ethers.utils.parseEther("0.0001") // 1 GLCR = 10000 USDC
   );
   console.log(
     `Liquidity Pair of $${await USDC.symbol()}-$${await GLCR.symbol()} deployed at ${UsdcGlcrLpAddress}`

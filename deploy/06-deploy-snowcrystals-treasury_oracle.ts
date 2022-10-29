@@ -33,7 +33,7 @@ const snowCrystalsTreasury: DeployFunction = async function (
     USDC,
     SNOW,
     ethers.BigNumber.from(1 * 10 ** 6),
-    ethers.utils.parseEther("1")
+    ethers.utils.parseEther("0.01") // 1 SNOW = 100 USDC
   );
   if (
     Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <

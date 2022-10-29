@@ -5,7 +5,12 @@ import { run } from "hardhat";
 async function main() {
   console.log(`
 runngin 01-snow-setup.ts...`);
-  await run("run", { script: "scripts/01-snow-setup.ts" });
+  try {
+    await run("run", { script: "scripts/01-snow-setup.ts" });
+  } catch (error) {
+    console.log(error);
+    process.exitCode = 1;
+  }
 
   console.log(`
 runngin 02-snow-tax_office-setup.ts...`);

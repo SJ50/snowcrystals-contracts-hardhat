@@ -238,6 +238,7 @@ async function main() {
     `(tx: ${setMainTokenWhitelistTypeDevTransactionResponse.hash})...`
   );
   console.log("----------------------------------------------------");
+  return "success";
 }
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.

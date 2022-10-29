@@ -50,7 +50,7 @@ async function main() {
     USDC,
     GLCR,
     ethers.BigNumber.from(1 * 10 ** 6),
-    ethers.utils.parseEther("1")
+    ethers.utils.parseEther("0.0001") // 1 GLCR = 10000 USDC
   );
   const ZAP: Zap = await ethers.getContract("Zap", deployer);
   const WRAPPED_ROUTER: WrappedRouter = await ethers.getContract(
