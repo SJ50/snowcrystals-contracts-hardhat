@@ -26,8 +26,6 @@ const snowCrystalsGlcr: DeployFunction = async function (
       ? dev
       : networkConfig[network.name].dev!;
 
-  log(DAO);
-  log(DEV);
   if (
     Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
     Math.round(Date.now() / 1000)

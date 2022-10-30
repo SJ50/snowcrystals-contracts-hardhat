@@ -1,6 +1,11 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { Snow, IERC20Token, Oracle, Treasury } from "../typechain-types";
+import {
+  Snow,
+  IERC20Token,
+  SeigniorageOracle,
+  Treasury,
+} from "../typechain-types";
 import verify from "../utils/verify";
 import { networkConfig, mocksDeploymentChains } from "../helper-hardhat-config";
 
@@ -19,7 +24,10 @@ const snowCrystalsDevSnowRebateTreasury: DeployFunction = async function (
         deployer
       );
   const SNOW: Snow = await ethers.getContract("Snow", deployer);
-  const TREASURY_ORACLE: Oracle = await ethers.getContract("Oracle", deployer);
+  const SEIGNIORAGE_ORACLE: SeigniorageOracle = await ethers.getContract(
+    "SeigniorageOracle",
+    deployer
+  );
   const TREASURY: Treasury = await ethers.getContract("Treasury", deployer);
   if (
     Date.parse(networkConfig[network.name].dappStartTime!) / 1000 <
@@ -34,7 +42,7 @@ const snowCrystalsDevSnowRebateTreasury: DeployFunction = async function (
     from: deployer,
     args: [
       SNOW.address,
-      TREASURY_ORACLE.address,
+      SEIGNIORAGE_ORACLE.address,
       TREASURY.address,
       USDC.address,
     ],
@@ -48,7 +56,7 @@ const snowCrystalsDevSnowRebateTreasury: DeployFunction = async function (
   ) {
     await verify(snowRebateTreasury.address, [
       SNOW.address,
-      TREASURY_ORACLE.address,
+      SEIGNIORAGE_ORACLE.address,
       TREASURY.address,
       USDC.address,
     ]);

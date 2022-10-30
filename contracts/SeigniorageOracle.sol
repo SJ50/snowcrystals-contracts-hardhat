@@ -12,7 +12,7 @@ import "./interfaces/lib/IUniswapV2Pair.sol";
 
 // fixed window oracle that recomputes the average price for the entire period once every period
 // note that the price average is only guaranteed to be over at least 1 period, but may be over a longer period
-contract Oracle is Epoch {
+contract SeigniorageOracle is Epoch {
     using FixedPoint for *;
     using SafeMath for uint256;
     using SafeMath for uint144;

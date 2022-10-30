@@ -44,7 +44,7 @@ const snowCrystalsTreasury: DeployFunction = async function (
   log(`
 ----------------------------------------------------`);
   log("Deploying TREASURY_ORACLE and waiting for confirmations...");
-  const treasuryOracle = await deploy("Oracle", {
+  const treasuryOracle = await deploy("SeigniorageOracle", {
     from: deployer,
     args: [UsdcSnowLpAddress, oraclePeriod, oracleStartTime, SNOW.address],
     log: true,
@@ -56,12 +56,12 @@ const snowCrystalsTreasury: DeployFunction = async function (
     process.env.CRONOSCAN_TESTNET_API_KEY
   ) {
     log(
-      `hh verify --network ${network.name} --contract contracts/Oracle.sol:Oracle ${treasuryOracle.address} ${UsdcSnowLpAddress} ${oraclePeriod} ${oracleStartTime} ${SNOW.address}`
+      `hh verify --network ${network.name} --contract contracts/SeigniorageOracle.sol:SeigniorageOracle ${treasuryOracle.address} ${UsdcSnowLpAddress} ${oraclePeriod} ${oracleStartTime} ${SNOW.address}`
     );
     await verify(
       treasuryOracle.address,
       [UsdcSnowLpAddress, oraclePeriod, oracleStartTime, SNOW.address],
-      "Oracle"
+      "SeigniorageOracle"
     );
   }
   log(`TREASURY_ORACLE deployed at ${treasuryOracle.address}`);

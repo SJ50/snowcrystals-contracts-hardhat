@@ -1,6 +1,6 @@
 import { ethers, getNamedAccounts } from "hardhat";
 import {
-  Oracle,
+  SeigniorageOracle,
   SnowOracle,
   GlcrOracle,
   Treasury,
@@ -10,7 +10,10 @@ import {
 async function main() {
   const { deployer } = await getNamedAccounts();
 
-  const ORACLE: Oracle = await ethers.getContract("Oracle", deployer);
+  const SEIGNIORAGE_ORACLE: SeigniorageOracle = await ethers.getContract(
+    "SeigniorageOracle",
+    deployer
+  );
   const SNOW_ORACLE: SnowOracle = await ethers.getContract(
     "SnowOracle",
     deployer
@@ -27,17 +30,17 @@ async function main() {
 
   console.log(`
 ----------------------------------------------------`);
-  console.log("updating Treasury Oracle...");
-  const updateOracleTransactionResponse = await ORACLE.update();
+  console.log("updating Treasury SeigniorageOracle...");
+  const updateOracleTransactionResponse = await SEIGNIORAGE_ORACLE.update();
   await updateOracleTransactionResponse.wait(1);
   console.log(`(tx: ${updateOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
   console.log(`
 ----------------------------------------------------`);
-  console.log("setting Treasury as Oracle operator...");
+  console.log("setting Treasury as SeigniorageOracle operator...");
   const transferOperatorOracleTransactionResponse =
-    await ORACLE.transferOperator(TREASURY.address);
+    await SEIGNIORAGE_ORACLE.transferOperator(TREASURY.address);
   await transferOperatorOracleTransactionResponse.wait(1);
   console.log(`(tx: ${transferOperatorOracleTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");

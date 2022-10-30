@@ -4,7 +4,7 @@ import {
   Snow,
   SBond,
   Glcr,
-  Oracle,
+  SeigniorageOracle,
   Boardroom,
   TaxOfficeV3,
   SnowGenesisRewardPool,
@@ -30,7 +30,10 @@ async function main() {
   const SNOW: Snow = await ethers.getContract("Snow", deployer);
   const SBOND: SBond = await ethers.getContract("SBond", deployer);
   const GLCR: Glcr = await ethers.getContract("Glcr", deployer);
-  const ORACLE: Oracle = await ethers.getContract("Oracle", deployer);
+  const SEIGNIORAGE_ORACLE: SeigniorageOracle = await ethers.getContract(
+    "SeigniorageOracle",
+    deployer
+  );
   const BOARDROOM: Boardroom = await ethers.getContract("Boardroom", deployer);
   const ONE_DAYS_IN_SECS = 24 * 60 * 60;
   const ONE_HOUR_IN_SECS = 1 * 60 * 60;
@@ -52,7 +55,7 @@ async function main() {
     SNOW.address,
     SBOND.address,
     GLCR.address,
-    ORACLE.address,
+    SEIGNIORAGE_ORACLE.address,
     BOARDROOM.address,
     TREASURY_START_TIME,
     TAXOFFICE.address,
