@@ -19,32 +19,32 @@ trap error_trap ERR
 
 echo "network is $NETWORK"
 
-# echo "running 01-snow-setup.ts..."
-# while true
-#     do  
-#     hh run --network $NETWORK scripts/01-snow-setup.ts 
-#     if [ $? == 0 ]; then
-#         break
-#     fi
-# done
+echo "running 01-snow-setup.ts..."
+while true
+    do  
+    hh run --network $NETWORK scripts/01-snow-setup.ts 
+    if [ $? == 0 ]; then
+        break
+    fi
+done
 
-# echo "running 02-snow-tax_office-setup.ts..."
-# while true
-#     do  
-#     hh run --network $NETWORK scripts/02-snow-tax_office-setup.ts
-#     if [ $? == 0 ]; then
-#         break
-#     fi
-# done
+echo "running 02-snow-tax_office-setup.ts..."
+while true
+    do  
+    hh run --network $NETWORK scripts/02-snow-tax_office-setup.ts
+    if [ $? == 0 ]; then
+        break
+    fi
+done
 
-# echo "running 03-glcr-setup.ts..."
-# while true
-#     do  
-#     hh run --network $NETWORK scripts/03-glcr-setup.ts
-#     if [ $? == 0 ]; then
-#         break
-#     fi
-# done
+echo "running 03-glcr-setup.ts..."
+while true
+    do  
+    hh run --network $NETWORK scripts/03-glcr-setup.ts
+    if [ $? == 0 ]; then
+        break
+    fi
+done
 
 echo "running 04-glcr-tax_office-setup.ts..."
 while true
