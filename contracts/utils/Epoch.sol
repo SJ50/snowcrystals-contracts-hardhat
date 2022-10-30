@@ -10,7 +10,7 @@ contract Epoch is Operator {
     using SafeMath for uint256;
 
     uint256 private period;
-    uint256 private immutable startTime;
+    uint256 private startTime;
     uint256 private lastEpochTime;
     uint256 private epoch;
 
@@ -24,7 +24,7 @@ contract Epoch is Operator {
         period = _period;
         startTime = _startTime;
         epoch = _startEpoch;
-        lastEpochTime = _startTime.sub(period);
+        lastEpochTime = startTime.sub(period);
     }
 
     /* ========== Modifier ========== */

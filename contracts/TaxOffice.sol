@@ -17,8 +17,8 @@ contract TaxOffice is Operator {
     event HandledMainTokenTax(uint256 _amount);
     event HandledShareTokenTax(uint256 _amount);
 
-    IERC20Taxable public immutable mainToken;
-    IERC20Taxable public immutable shareToken;
+    IERC20Taxable public mainToken;
+    IERC20Taxable public shareToken;
     IOracle public mainTokenOracle;
 
     uint256 public constant BASIS_POINTS_DENOM = 10_000;
@@ -302,7 +302,7 @@ contract TaxOfficeV2 is TaxOffice {
     using SafeERC20 for IERC20;
 
     address public router;
-    IERC20 public immutable pegToken;
+    IERC20 public pegToken;
 
     constructor(
         address _mainToken,

@@ -12,7 +12,7 @@ import "./interfaces/IERC20Metadata.sol";
 **/
 contract UsdcOracle {
     using SafeMath for uint256;
-    IStdReference private immutable ref;
+    IStdReference private ref;
 
     uint256 public price;
     uint256[] public pricesArr;

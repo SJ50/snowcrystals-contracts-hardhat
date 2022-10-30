@@ -30,7 +30,7 @@ contract GlcrRewardPool {
         bool isStarted; // if lastRewardTime has passed
     }
 
-    IERC20 public immutable glcr;
+    IERC20 public glcr;
 
     // Info of each pool.
     PoolInfo[] public poolInfo;
@@ -42,13 +42,13 @@ contract GlcrRewardPool {
     uint256 public totalAllocPoint = 0;
 
     // The time when glcr mining starts.
-    uint256 public immutable poolStartTime;
+    uint256 public poolStartTime;
 
     // The time when glcr mining ends.
-    uint256 public immutable poolEndTime;
+    uint256 public poolEndTime;
 
-    uint256 public immutable glcrPerSecond;
-    uint256 public constant RUNNING_TIME = 52 weeks;
+    uint256 public glcrPerSecond;
+    uint256 public RUNNING_TIME = 52 weeks;
     uint256 public constant TOTAL_REWARDS = 21500 ether;
 
     bool enableTaxes = true;
@@ -82,7 +82,7 @@ contract GlcrRewardPool {
         daoFund = _daoFund;
         glcrPerSecond = TOTAL_REWARDS.div(365).div(24).div(60).div(60);
         poolStartTime = _poolStartTime;
-        poolEndTime = _poolStartTime + RUNNING_TIME;
+        poolEndTime = poolStartTime + RUNNING_TIME;
         operator = msg.sender;
     }
 
