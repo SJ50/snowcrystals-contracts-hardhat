@@ -36,13 +36,11 @@ const config: HardhatUserConfig = {
       url: "https://evm.cronos.org",
       accounts: [DEPLOYER],
       chainId: 25,
-      gasPrice: 5000000000000,
     },
     cronosTestnet: {
       url: "https://evm-t3.cronos.org",
       accounts: [DEPLOYER],
       chainId: 338,
-      gasPrice: 5000000000000,
     },
     localhost: {
       url: "http://127.0.0.1:8545/",

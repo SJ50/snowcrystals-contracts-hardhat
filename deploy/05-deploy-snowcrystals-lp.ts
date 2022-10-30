@@ -29,6 +29,9 @@ const snowCrystalsLP: DeployFunction = async function (
   const SNOW: Snow = await ethers.getContract("Snow", deployer);
   const GLCR: Glcr = await ethers.getContract("Glcr", deployer);
 
+  console.log(
+    `Adding liquidity Pair of $${await USDC.symbol()}-$${await SNOW.symbol()}`
+  );
   const UsdcSnowLpAddress: string = await addLiqudity(
     USDC,
     SNOW,
@@ -39,6 +42,9 @@ const snowCrystalsLP: DeployFunction = async function (
     `Liquidity Pair of $${await USDC.symbol()}-$${await SNOW.symbol()} deployed at ${UsdcSnowLpAddress}`
   );
   console.log("----------------------------------------------------");
+  console.log(
+    `Adding liquidity Pair of $${await USDC.symbol()}-$${await GLCR.symbol()}`
+  );
   const UsdcGlcrLpAddress: string = await addLiqudity(
     USDC,
     GLCR,

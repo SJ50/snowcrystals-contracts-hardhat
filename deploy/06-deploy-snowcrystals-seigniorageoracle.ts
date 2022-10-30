@@ -64,9 +64,9 @@ const snowCrystalsTreasury: DeployFunction = async function (
       "SeigniorageOracle"
     );
   }
-  log(`TREASURY_ORACLE deployed at ${treasuryOracle.address}`);
+  log(`SEIGNIORAGE_ORACLE deployed at ${treasuryOracle.address}`);
   log("----------------------------------------------------");
 };
 
 export default snowCrystalsTreasury;
-snowCrystalsTreasury.tags = ["all", "snowcrystals", "treasuryOracle"];
+snowCrystalsTreasury.tags = ["all", "snowcrystals", "SeigniorageOracle"];
