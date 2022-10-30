@@ -80,7 +80,7 @@ async function main() {
 
   console.log(`
 ----------------------------------------------------`);
-  console.log("setting TREASURY as $SNOW operator...");
+  console.log("setting TREASURY miniting factor for payingdebt...");
   const setMintingFactorForPayingDebtTransactionResponse =
     await TREASURY.setMintingFactorForPayingDebt(15000);
   await setMintingFactorForPayingDebtTransactionResponse.wait(1);
