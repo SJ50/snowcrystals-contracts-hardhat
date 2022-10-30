@@ -37,7 +37,7 @@ export const networkConfig: networkConfigInfo = {
     router: "0xc4e4DdB7a71fCF9Bb7356461Ca75124aA9910653",
     blockConfirmations: 6,
     contractVerfication: true,
-    dappStartTime: "2022-10-29T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC
+    dappStartTime: "2022-10-31T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC
   },
   cronos: {
     dao: "0xeDc5E564811b96Ec8ca2336895C66b3B88F9ef66",
