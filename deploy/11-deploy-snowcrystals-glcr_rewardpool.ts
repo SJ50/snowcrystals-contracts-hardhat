@@ -2,7 +2,7 @@ import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { Glcr } from "../typechain-types";
 import verify from "../utils/verify";
-import { glcrStartTime } from "../utils/startTime";
+import { dappStartTime } from "../utils/startTime";
 import { networkConfig, developmentChains } from "../helper-hardhat-config";
 
 const snowCrystalsGlcrRewardPool: DeployFunction = async function (
@@ -18,7 +18,7 @@ const snowCrystalsGlcrRewardPool: DeployFunction = async function (
       ? dao
       : networkConfig[network.name].dao!;
 
-  const glcrRewardPoolStartTime = await glcrStartTime(network.name);
+  const glcrRewardPoolStartTime = await dappStartTime(network.name);
 
   const GLCR: Glcr = await ethers.getContract("Glcr", deployer);
   if (

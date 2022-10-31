@@ -9,7 +9,7 @@ import {
   TaxOfficeV3,
   SnowGenesisRewardPool,
 } from "../typechain-types";
-import { glcrStartTime } from "../utils/startTime";
+import { dappStartTime } from "../utils/startTime";
 import { networkConfig, developmentChains } from "../helper-hardhat-config";
 
 async function main() {
@@ -38,7 +38,7 @@ async function main() {
   const ONE_DAYS_IN_SECS = 24 * 60 * 60;
   const ONE_HOUR_IN_SECS = 1 * 60 * 60;
   const TREASURY_START_TIME =
-    (await glcrStartTime(network.name)) +
+    (await dappStartTime(network.name)) +
     ONE_DAYS_IN_SECS +
     18 * ONE_HOUR_IN_SECS;
   const TAXOFFICE: TaxOfficeV3 = await ethers.getContract(

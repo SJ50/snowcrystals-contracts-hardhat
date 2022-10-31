@@ -16,7 +16,7 @@ const utcSnowCrystalsStartTimeEpoch = async (networkName: string) => {
   }
 };
 
-export const glcrStartTime = async (networkName: string) => {
+export const dappStartTime = async (networkName: string) => {
   const ONE_DAYS_IN_SECS = 24 * 60 * 60;
   if (networkName == "cronosTestnet") {
     return (

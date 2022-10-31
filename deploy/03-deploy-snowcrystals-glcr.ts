@@ -1,7 +1,7 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import verify from "../utils/verify";
-import { glcrStartTime } from "../utils/startTime";
+import { dappStartTime } from "../utils/startTime";
 import { networkConfig, developmentChains } from "../helper-hardhat-config";
 
 const snowCrystalsGlcr: DeployFunction = async function (
@@ -41,7 +41,7 @@ const snowCrystalsGlcr: DeployFunction = async function (
     args: [
       sharetoken_name,
       sharetoken_symbol,
-      await glcrStartTime(network.name),
+      await dappStartTime(network.name),
       DAO,
       DEV,
     ],
@@ -56,7 +56,7 @@ const snowCrystalsGlcr: DeployFunction = async function (
     await verify(glcr.address, [
       sharetoken_name,
       sharetoken_symbol,
-      await glcrStartTime(network.name),
+      await dappStartTime(network.name),
       DAO,
       DEV,
     ]);
