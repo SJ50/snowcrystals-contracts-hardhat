@@ -69,4 +69,4 @@ const snowCrystalsTreasury: DeployFunction = async function (
 };
 
 export default snowCrystalsTreasury;
-snowCrystalsTreasury.tags = ["all", "snowcrystals", "SeigniorageOracle"];
+snowCrystalsTreasury.tags = ["all", "snowcrystals", "seigniorageoracle"];

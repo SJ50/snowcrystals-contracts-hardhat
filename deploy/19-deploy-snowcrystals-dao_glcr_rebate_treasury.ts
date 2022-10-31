@@ -59,5 +59,5 @@ export default snowCrystalsDaoGlcrRebateTreasury;
 snowCrystalsDaoGlcrRebateTreasury.tags = [
   "all",
   "snowcrystals",
-  "daoGlcrRebateTreasury",
+  "dao_glcr_rebate_treasury",
 ];

@@ -38,4 +38,4 @@ const snowCrystalsUsdcOracle: DeployFunction = async function (
 };
 
 export default snowCrystalsUsdcOracle;
-snowCrystalsUsdcOracle.tags = ["all", "snowcrystals", "usdcOracle"];
+snowCrystalsUsdcOracle.tags = ["all", "snowcrystals", "usdc_oracle"];

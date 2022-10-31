@@ -67,4 +67,4 @@ const snowCrystalsGlcrNode: DeployFunction = async function (
 };
 
 export default snowCrystalsGlcrNode;
-snowCrystalsGlcrNode.tags = ["all", "snowcrystals", "glcrNode"];
+snowCrystalsGlcrNode.tags = ["all", "snowcrystals", "glcr_node"];

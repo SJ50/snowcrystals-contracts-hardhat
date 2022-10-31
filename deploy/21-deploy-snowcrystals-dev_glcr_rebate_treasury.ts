@@ -59,5 +59,5 @@ export default snowCrystalsDevGlcrRebateTreasury;
 snowCrystalsDevGlcrRebateTreasury.tags = [
   "all",
   "snowcrystals",
-  "devGlcrRebateTreasury",
+  "dev_glcr_rebate_treasury",
 ];

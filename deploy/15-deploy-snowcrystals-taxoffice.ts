@@ -64,4 +64,4 @@ const snowCrystalsTaxOffice: DeployFunction = async function (
 };
 
 export default snowCrystalsTaxOffice;
-snowCrystalsTaxOffice.tags = ["all", "snowcrystals", "taxOffice"];
+snowCrystalsTaxOffice.tags = ["all", "snowcrystals", "taxoffice"];

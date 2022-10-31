@@ -66,4 +66,4 @@ const snowCrystalsGlcrOracle: DeployFunction = async function (
 };
 
 export default snowCrystalsGlcrOracle;
-snowCrystalsGlcrOracle.tags = ["all", "snowcrystals", "glcrOracle"];
+snowCrystalsGlcrOracle.tags = ["all", "snowcrystals", "glcr_oracle"];

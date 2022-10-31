@@ -36,4 +36,4 @@ const snowCrystalsWrappedRouter: DeployFunction = async function (
 };
 
 export default snowCrystalsWrappedRouter;
-snowCrystalsWrappedRouter.tags = ["all", "snowcrystals", "wrappedRouter"];
+snowCrystalsWrappedRouter.tags = ["all", "snowcrystals", "wrappedrouter"];

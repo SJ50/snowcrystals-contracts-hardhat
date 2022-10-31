@@ -66,4 +66,4 @@ const snowCrystalsSnowNode: DeployFunction = async function (
 };
 
 export default snowCrystalsSnowNode;
-snowCrystalsSnowNode.tags = ["all", "snowcrystals", "snowNode"];
+snowCrystalsSnowNode.tags = ["all", "snowcrystals", "snow_node"];

@@ -74,5 +74,5 @@ export default snowCrystalsSnowGenesisRewardPool;
 snowCrystalsSnowGenesisRewardPool.tags = [
   "all",
   "snowcrystals",
-  "snowGenesisRewardPool",
+  "snow_genesispool",
 ];

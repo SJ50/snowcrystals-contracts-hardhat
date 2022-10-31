@@ -52,4 +52,4 @@ const snowCrystalsGlcrRewardPool: DeployFunction = async function (
 };
 
 export default snowCrystalsGlcrRewardPool;
-snowCrystalsGlcrRewardPool.tags = ["all", "snowcrystals", "glcrRewardPool"];
+snowCrystalsGlcrRewardPool.tags = ["all", "snowcrystals", "glcr_rewardpool"];

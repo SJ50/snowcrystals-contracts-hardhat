@@ -68,4 +68,4 @@ const snowCrystalsSnowOracle: DeployFunction = async function (
 };
 
 export default snowCrystalsSnowOracle;
-snowCrystalsSnowOracle.tags = ["all", "snowcrystals", "snowOracle"];
+snowCrystalsSnowOracle.tags = ["all", "snowcrystals", "snow_oracle"];
