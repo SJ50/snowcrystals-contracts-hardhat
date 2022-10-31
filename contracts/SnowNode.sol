@@ -16,7 +16,7 @@ contract SnowNode {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
 
-    IERC20 public TOKEN;
+    IERC20 public immutable TOKEN;
     uint256[] public tierAllocPoints = [1 ether, 1 ether, 1 ether];
     uint256[] public tierAmounts = [0.00002 ether, 1 ether, 1 ether];
     struct User {

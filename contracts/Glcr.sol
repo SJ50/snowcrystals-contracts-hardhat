@@ -23,11 +23,11 @@ contract Glcr is ERC20Taxable {
     uint256 public constant DEV_FUND_POOL_ALLOCATION = 3490 ether;
 
     uint256 public constant VESTING_DURATION = 52 weeks;
-    uint256 public startTime;
-    uint256 public endTime;
+    uint256 public immutable startTime;
+    uint256 public immutable endTime;
 
-    uint256 public communityFundRewardRate;
-    uint256 public devFundRewardRate;
+    uint256 public immutable communityFundRewardRate;
+    uint256 public immutable devFundRewardRate;
 
     address public communityFund;
     address public devFund;
@@ -48,10 +48,10 @@ contract Glcr is ERC20Taxable {
         _mint(_daoFund, 25 ether); // Airdop 25 GLCR allocated to DAO wallet
 
         startTime = _startTime;
-        endTime = startTime + VESTING_DURATION;
+        endTime = _startTime + VESTING_DURATION;
 
-        communityFundLastClaimed = startTime;
-        devFundLastClaimed = startTime;
+        communityFundLastClaimed = _startTime;
+        devFundLastClaimed = _startTime;
 
         communityFundRewardRate = COMMUNITY_FUND_POOL_ALLOCATION.div(
             VESTING_DURATION

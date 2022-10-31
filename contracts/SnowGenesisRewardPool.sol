@@ -14,8 +14,8 @@ contract SnowGenesisRewardPool is Ownable {
 
     // governance
     address public operator;
-    address public daoFund;
-    uint256 public depositFee;
+    address public immutable daoFund;
+    uint256 public immutable depositFee;
 
     // Info of each user.
     struct UserInfo {
@@ -51,7 +51,7 @@ contract SnowGenesisRewardPool is Ownable {
     uint256 public poolEndTime;
 
     uint256 public snowPerSecond;
-    uint256 public runningTime = 48 hours;
+    uint256 public constant RUNNING_TIME = 48 hours;
     uint256 public constant TOTAL_REWARDS = 24_000 ether;
 
     event Deposit(address indexed user, uint256 indexed pid, uint256 amount);
@@ -72,14 +72,13 @@ contract SnowGenesisRewardPool is Ownable {
     ) public {
         require(block.timestamp < _poolStartTime, "late");
         if (_snow != address(0)) snow = IERC20(_snow);
-        snowPerSecond = TOTAL_REWARDS.div(runningTime);
+        snowPerSecond = TOTAL_REWARDS.div(RUNNING_TIME);
         poolStartTime = _poolStartTime;
-        poolEndTime = poolStartTime + runningTime;
+        poolEndTime = _poolStartTime + RUNNING_TIME;
         daoFund = _daoFund;
-        depositToken = IERC20(_depositToken);
         depositFee = _depositFee;
         operator = msg.sender;
-        add(12_000, depositToken, false, 0);
+        add(12_000, IERC20(_depositToken), false, 0);
     }
 
     modifier onlyOperator() {
