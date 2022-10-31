@@ -28,7 +28,7 @@ export const networkConfig: networkConfigInfo = {
   localhost: {
     bandDatafeedRef: "0xDA7a001b254CD22e46d3eAB04d937489c93174C3",
     router: "0x145677FC4d9b8F19B5D56d1820c48e0443049a30",
-    dappStartTime: "2022-10-29T00:00:00Z",
+    dappStartTime: "2022-10-29T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC // Glcr, Glcr rewardpool, Snow genesis rewardpool start at this time // Treasury starts after 18 hours // Nodes starts after 9 days.
   },
   cronosTestnet: {
     dao: "0xeDc5E564811b96Ec8ca2336895C66b3B88F9ef66",
@@ -37,11 +37,11 @@ export const networkConfig: networkConfigInfo = {
     router: "0xc4e4DdB7a71fCF9Bb7356461Ca75124aA9910653",
     blockConfirmations: 6,
     contractVerfication: true,
-    dappStartTime: "2022-10-31T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC
+    dappStartTime: "2022-10-31T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC // Glcr, Glcr rewardpool, Snow genesis rewardpool start at this time // Treasury starts after 18 hours // Nodes starts after 9 days.
   },
   cronos: {
-    dao: "0xeDc5E564811b96Ec8ca2336895C66b3B88F9ef66",
-    dev: "0x8680492A2587F3Eb03ca0468F9695A6D21742CfC",
+    dao: "0xeDc5E564811b96Ec8ca2336895C66b3B88F9ef66", // change this
+    dev: "0x8680492A2587F3Eb03ca0468F9695A6D21742CfC", // change this
     bandDatafeedRef: "0xDA7a001b254CD22e46d3eAB04d937489c93174C3",
     router: "0x145677FC4d9b8F19B5D56d1820c48e0443049a30",
     wcro: "0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23",
@@ -52,7 +52,7 @@ export const networkConfig: networkConfigInfo = {
     usdt: "0x66e428c3f67a68878562e79A0234c1F83c208770",
     blockConfirmations: 6,
     contractVerfication: true,
-    dappStartTime: "2022-10-26T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC
+    dappStartTime: "2022-10-26T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC // Glcr, Glcr rewardpool, Snow genesis rewardpool start at this time // Treasury starts after 18 hours // Nodes starts after 9 days.
   },
 };
 

@@ -2,7 +2,7 @@ import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { Glcr } from "../typechain-types";
 import verify from "../utils/verify";
-import { dappStartTime } from "../utils/startTime";
+import dappStartTime from "../utils/startTime";
 import { networkConfig, developmentChains } from "../helper-hardhat-config";
 
 const snowCrystalsGlcrRewardPool: DeployFunction = async function (

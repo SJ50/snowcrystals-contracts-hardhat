@@ -1,7 +1,7 @@
 import { networkConfig, developmentChains } from "../helper-hardhat-config";
 
 const currentTimestampInSeconds = Math.round(Date.now() / 1000); // local timezone
-const utcSnowCrystalsStartTimeEpoch = async (networkName: string) => {
+const dappStartTime = async (networkName: string) => {
   if (networkConfig[networkName].dappStartTime === undefined) {
     return currentTimestampInSeconds + 30 * 60;
   } else if (
@@ -16,16 +16,4 @@ const utcSnowCrystalsStartTimeEpoch = async (networkName: string) => {
   }
 };
 
-export const dappStartTime = async (networkName: string) => {
-  const ONE_DAYS_IN_SECS = 24 * 60 * 60;
-  if (networkName == "cronosTestnet") {
-    return (
-      Number(await utcSnowCrystalsStartTimeEpoch(networkName)) +
-      ONE_DAYS_IN_SECS
-    );
-  } else {
-    return Number(await utcSnowCrystalsStartTimeEpoch(networkName));
-  }
-};
-
-export default utcSnowCrystalsStartTimeEpoch;
+export default dappStartTime;
