@@ -6,7 +6,6 @@ import {
   Glcr,
   SeigniorageOracle,
   Boardroom,
-  TaxOfficeV3,
   SnowGenesisRewardPool,
 } from "../typechain-types";
 import dappStartTime from "../utils/startTime";

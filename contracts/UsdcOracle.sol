@@ -3,8 +3,8 @@ pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
-import "../interfaces/IStdReference.sol";
-import "../interfaces/IERC20Metadata.sol";
+import "./interfaces/IStdReference.sol";
+import "./interfaces/IERC20Metadata.sol";
 
 /**
  https://docs.bandchain.org/band-standard-dataset/supported-blockchains.html
