@@ -38,10 +38,7 @@ async function main() {
   const ONE_HOUR_IN_SECS = 1 * 60 * 60;
   const TREASURY_START_TIME =
     Number(await dappStartTime(network.name)) + (24 + 18) * ONE_HOUR_IN_SECS;
-  const TAXOFFICE: TaxOfficeV3 = await ethers.getContract(
-    "TaxOfficeV3",
-    deployer
-  );
+
   const SNOW_GENESIS_REWARDPOOL: SnowGenesisRewardPool =
     await ethers.getContract("SnowGenesisRewardPool", deployer);
 
@@ -55,7 +52,6 @@ async function main() {
     SEIGNIORAGE_ORACLE.address,
     BOARDROOM.address,
     TREASURY_START_TIME,
-    TAXOFFICE.address,
     [SNOW_GENESIS_REWARDPOOL.address]
   );
   await initializeTransactionResponse.wait(1);
