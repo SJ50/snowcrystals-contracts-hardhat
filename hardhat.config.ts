@@ -16,7 +16,6 @@ import "./tasks/treasury-allocateSeigniorage";
 setGlobalFlags({
   account: "my.1password.com",
 });
-console.log(whoami);
 const CRONOSCAN_API_KEY: string = process.env.CRONOSCAN_API_KEY!;
 const CRONOSCAN_TESTNET_API_KEY: string =
   process.env.CRONOSCAN_TESTNET_API_KEY!;
