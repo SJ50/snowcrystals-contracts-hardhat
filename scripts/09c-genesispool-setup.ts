@@ -45,32 +45,6 @@ async function main() {
 
   console.log(`
 ----------------------------------------------------`);
-  console.log("adding WBTC to genesispool...");
-  const addWbtcTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
-    2400,
-    WBTC.address,
-    false,
-    0
-  );
-  await addWbtcTransactionResponse.wait(1);
-  console.log(`(tx: ${addWbtcTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
-
-  console.log(`
-----------------------------------------------------`);
-  console.log("adding WCRO to genesispool...");
-  const addWcroTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
-    2400,
-    WCRO.address,
-    false,
-    0
-  );
-  await addWcroTransactionResponse.wait(1);
-  console.log(`(tx: ${addWcroTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
-
-  console.log(`
-----------------------------------------------------`);
   console.log("adding WETH to genesispool...");
   const addWethTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
     2400,
@@ -80,32 +54,6 @@ async function main() {
   );
   await addWethTransactionResponse.wait(1);
   console.log(`(tx: ${addWethTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
-
-  console.log(`
-----------------------------------------------------`);
-  console.log("adding DAI to genesispool...");
-  const addDaiTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
-    2400,
-    DAI.address,
-    false,
-    0
-  );
-  await addDaiTransactionResponse.wait(1);
-  console.log(`(tx: ${addDaiTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
-
-  console.log(`
-----------------------------------------------------`);
-  console.log("adding USDT to genesispool...");
-  const addUsdtTransactionResponse = await SNOW_GENESIS_REWARDPOOL.add(
-    2400,
-    USDT.address,
-    false,
-    0
-  );
-  await addUsdtTransactionResponse.wait(1);
-  console.log(`(tx: ${addUsdtTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 }
 // We recommend this pattern to be able to use async/await everywhere

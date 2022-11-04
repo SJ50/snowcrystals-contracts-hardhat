@@ -34,34 +34,35 @@ async function main() {
   console.log(`(tx: ${setTaxOfficeTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log(`
-----------------------------------------------------`);
-  console.log("funding $SNOW genesispool...");
-  const distributeRewardTransactionResponse = await SNOW.distributeReward(
-    SNOW_GENESIS_REWARDPOOL.address,
-    DAO
-  );
-  await distributeRewardTransactionResponse.wait(1);
-  console.log(`(tx: ${distributeRewardTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
+  //   console.log(`
+  // ----------------------------------------------------`);
+  //   console.log("funding $SNOW genesispool...");
+  //   const distributeRewardTransactionResponse = await SNOW.distributeReward(
+  //     SNOW_GENESIS_REWARDPOOL.address,
+  //     DAO
+  //   );
+  //   await distributeRewardTransactionResponse.wait(1);
+  //   console.log(`(tx: ${distributeRewardTransactionResponse.hash})...`);
+  //   console.log("----------------------------------------------------");
 
-  console.log(`
-----------------------------------------------------`);
-  console.log("setting TREASURY as $SNOW operator...");
-  const transferOperatorTransactionResponse = await SNOW.transferOperator(
-    TREASURY.address
-  );
-  await transferOperatorTransactionResponse.wait(1);
-  console.log(`(tx: ${transferOperatorTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
+  //   console.log(`
+  // ----------------------------------------------------`);
+  //   console.log("setting TREASURY as $SNOW operator...");
+  //   const transferOperatorTransactionResponse = await SNOW.transferOperator(
+  //     TREASURY.address
+  //   );
+  //   await transferOperatorTransactionResponse.wait(1);
+  //   console.log(`(tx: ${transferOperatorTransactionResponse.hash})...`);
+  //   console.log("----------------------------------------------------");
 
-  console.log(`
-----------------------------------------------------`);
-  console.log("renounce ownership of $SNOW...");
-  const renounceOwnershipTransactionResponse = await SNOW.renounceOwnership();
-  await renounceOwnershipTransactionResponse.wait(1);
-  console.log(`(tx: ${renounceOwnershipTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
+  //   console.log(`
+  // ----------------------------------------------------`);
+  //   console.log("renounce ownership of $SNOW...");
+  //   const renounceOwnershipTransactionResponse = await SNOW.renounceOwnership();
+  //   await renounceOwnershipTransactionResponse.wait(1);
+  //   console.log(`(tx: ${renounceOwnershipTransactionResponse.hash})...`);
+  //   console.log("----------------------------------------------------");
+
   // console.log(
   //   ethers.utils.formatUnits(
   //     await SNOW.balanceOf(deployer),

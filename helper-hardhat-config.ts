@@ -37,7 +37,7 @@ export const networkConfig: networkConfigInfo = {
     router: "0xc4e4DdB7a71fCF9Bb7356461Ca75124aA9910653",
     blockConfirmations: 6,
     contractVerfication: true,
-    dappStartTime: "2022-11-5T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC // Glcr, Glcr rewardpool, Snow genesis rewardpool start at this time // Treasury starts after 18 hours // Nodes starts after 9 days.
+    dappStartTime: "2022-11-05T00:00:00Z", // ISO8601-compliant; "Z" at the end means UTC // Glcr, Glcr rewardpool, Snow genesis rewardpool start at this time // Treasury starts after 18 hours // Nodes starts after 9 days.
   },
   cronos: {
     dao: "0xeDc5E564811b96Ec8ca2336895C66b3B88F9ef66", // change this

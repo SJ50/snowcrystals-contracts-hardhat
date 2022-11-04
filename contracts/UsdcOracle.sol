@@ -10,7 +10,7 @@ import "./interfaces/IERC20Metadata.sol";
  https://docs.bandchain.org/band-standard-dataset/supported-blockchains.html
  https://docs.bandchain.org/band-standard-dataset/using-band-dataset/using-band-dataset-evm.html
 **/
-contract DataFeedOracle {
+contract UsdcOracle {
     using SafeMath for uint256;
     IStdReference private immutable ref;
 

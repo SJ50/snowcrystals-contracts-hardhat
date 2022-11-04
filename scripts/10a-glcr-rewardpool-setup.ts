@@ -52,31 +52,31 @@ async function main() {
   console.log(`(tx: ${addUsdcSnowLPTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log(`
-----------------------------------------------------`);
-  console.log("adding USDC-GLCR-LP to GlcrRewardPool...");
-  const addUsdcGlcrLPTransactionResponse = await GLCR_REWARDPOOL.add(
-    8600,
-    USDC_GLCR_LP_ADDRESS,
-    false,
-    0
-  );
-  await addUsdcGlcrLPTransactionResponse.wait(1);
-  console.log(`(tx: ${addUsdcGlcrLPTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
+  //   console.log(`
+  // ----------------------------------------------------`);
+  //   console.log("adding USDC-GLCR-LP to GlcrRewardPool...");
+  //   const addUsdcGlcrLPTransactionResponse = await GLCR_REWARDPOOL.add(
+  //     8600,
+  //     USDC_GLCR_LP_ADDRESS,
+  //     false,
+  //     0
+  //   );
+  //   await addUsdcGlcrLPTransactionResponse.wait(1);
+  //   console.log(`(tx: ${addUsdcGlcrLPTransactionResponse.hash})...`);
+  //   console.log("----------------------------------------------------");
 
-  console.log(`
-----------------------------------------------------`);
-  console.log("adding $SBOND to GlcrRewardPool...");
-  const addSbondTransactionResponse = await GLCR_REWARDPOOL.add(
-    0,
-    SBOND.address,
-    false,
-    0
-  );
-  await addSbondTransactionResponse.wait(1);
-  console.log(`(tx: ${addSbondTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
+  //   console.log(`
+  // ----------------------------------------------------`);
+  //   console.log("adding $SBOND to GlcrRewardPool...");
+  //   const addSbondTransactionResponse = await GLCR_REWARDPOOL.add(
+  //     0,
+  //     SBOND.address,
+  //     false,
+  //     0
+  //   );
+  //   await addSbondTransactionResponse.wait(1);
+  //   console.log(`(tx: ${addSbondTransactionResponse.hash})...`);
+  //   console.log("----------------------------------------------------");
 }
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.

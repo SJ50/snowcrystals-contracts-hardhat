@@ -5,7 +5,7 @@
       "chainId": "338",
       "contracts": {
         "Boardroom": {
-          "address": "0x03a89881C6C3114fA8Efaa50C5912698Cfa4c1d3",
+          "address": "0x7bd8dF5EBa5F469E0afA8674734A9E9f253b5F03",
           "abi": [
             {
               "anonymous": false,
@@ -582,7 +582,7 @@
           ]
         },
         "DevGlcrRebateTreasury": {
-          "address": "0x7680a9391ae0Ac9CDB5b8696C85C13266D93a78f",
+          "address": "0x74CbC5a84fc78fDe6Cd4b688297674F4D061d1aD",
           "abi": [
             {
               "inputs": [
@@ -1126,7 +1126,7 @@
           ]
         },
         "DevSnowRebateTreasury": {
-          "address": "0xc6884e37d58D26ca9aA2463Fef1FDB881F550bf7",
+          "address": "0xAa7CBEE8a0ddbE9eC318Dc2583DC0f2A6B77Ce9c",
           "abi": [
             {
               "inputs": [
@@ -1760,7 +1760,7 @@
           ]
         },
         "Glcr": {
-          "address": "0xbe27f32D9F731CC9DddAfE3ddaA7CBBC0f58b414",
+          "address": "0xcBa7B6E4888400a2D73036d2c7b8E1d63d529654",
           "abi": [
             {
               "inputs": [
@@ -2689,7 +2689,7 @@
           ]
         },
         "GlcrNode": {
-          "address": "0x1f29C402B3B9Ac0fe0aF60ee9eb74986a4A3e621",
+          "address": "0x392330922CD156748aDa784d3e78A7A4f34C2F17",
           "abi": [
             {
               "inputs": [
@@ -3516,7 +3516,7 @@
           ]
         },
         "GlcrOracle": {
-          "address": "0xa419003b3dbC9F888FDb761a3830E18D00c71490",
+          "address": "0x9521895e9A0C4657261d5dd4233AC9f7A5CD13C1",
           "abi": [
             {
               "inputs": [
@@ -3952,7 +3952,7 @@
           ]
         },
         "GlcrRebateTreasury": {
-          "address": "0x7387972a0673C6380F95A62f287EBF3f130B4EAa",
+          "address": "0x53519eb3A3558d82bCF14B06A5c794AD2121F237",
           "abi": [
             {
               "inputs": [
@@ -4509,7 +4509,7 @@
           ]
         },
         "GlcrRewardPool": {
-          "address": "0xF377e8DD281fc3F3b1E6F131509e92f574ca0cBA",
+          "address": "0xF82B385cC6f8316C24cC636bB208FDc9C62Afa83",
           "abi": [
             {
               "inputs": [
@@ -6806,7 +6806,7 @@
           ]
         },
         "SBond": {
-          "address": "0x66608790511b4d7B5f179d3b65f68A3Aa42347b0",
+          "address": "0x96f684a51A6359337Cb5BB3CE1E7B89BfF93d02f",
           "abi": [
             {
               "inputs": [
@@ -7298,7 +7298,7 @@
           ]
         },
         "SeigniorageOracle": {
-          "address": "0xF7C92f8c9E7D130FBb9269f4DBa30A44d6842cF6",
+          "address": "0x129c4dDE62a5A2e4F143112a516E60509B448429",
           "abi": [
             {
               "inputs": [
@@ -7734,7 +7734,7 @@
           ]
         },
         "Snow": {
-          "address": "0x05a3F4E0ad6580D9d977F5eE12F168620f4F71e9",
+          "address": "0x4F79bb07123d133C4eB82174014DC58585Cb7f68",
           "abi": [
             {
               "inputs": [
@@ -8520,7 +8520,7 @@
           ]
         },
         "SnowGenesisRewardPool": {
-          "address": "0xfbe4B1b588CAbBFf5D9Fad90cb49177Ce7E3AC0a",
+          "address": "0xcf02a7d02dE8131c7938e3DF3a6Cb50B0802E0D5",
           "abi": [
             {
               "inputs": [
@@ -8665,6 +8665,19 @@
               ],
               "name": "Withdraw",
               "type": "event"
+            },
+            {
+              "inputs": [],
+              "name": "RUNNING_TIME",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
             },
             {
               "inputs": [],
@@ -8954,19 +8967,6 @@
               "type": "function"
             },
             {
-              "inputs": [],
-              "name": "runningTime",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -9112,7 +9112,7 @@
           ]
         },
         "SnowNode": {
-          "address": "0xad6A384aAC4aC8DDE05dB79a78Feb2FDDd2df623",
+          "address": "0x89fff15cb48CA7CDd3E0300d0e0c035dd086D553",
           "abi": [
             {
               "inputs": [
@@ -9939,7 +9939,7 @@
           ]
         },
         "SnowOracle": {
-          "address": "0x64762A454988676Db26fD46ced66Fa66883EEA8A",
+          "address": "0x33f201891F6Df8dD18Fd1877Ad0da1f2A3af3129",
           "abi": [
             {
               "inputs": [
@@ -10375,7 +10375,7 @@
           ]
         },
         "SnowRebateTreasury": {
-          "address": "0xb7d8406D968C308098c7d083396913F1C38f1875",
+          "address": "0xd89bB50bf189c584ae84d8056c075c49e031dE80",
           "abi": [
             {
               "inputs": [
@@ -11022,7 +11022,7 @@
           ]
         },
         "TaxOfficeV3": {
-          "address": "0xFd175D81B9f559aa55Dae17bDCb6C1e3860edF9e",
+          "address": "0xF65ac4f7B35403839441Df569e2B7B44D874b18A",
           "abi": [
             {
               "inputs": [
@@ -11653,7 +11653,7 @@
           ]
         },
         "Treasury": {
-          "address": "0x60cB672031E839a80B49Df12b3e3986b211B59Fb",
+          "address": "0x477B5AaE1B2F5b98B54291A879f3875F18B5a9C0",
           "abi": [
             {
               "anonymous": false,
@@ -12308,11 +12308,6 @@
                   "type": "uint256"
                 },
                 {
-                  "internalType": "address",
-                  "name": "_taxOffice",
-                  "type": "address"
-                },
-                {
                   "internalType": "address[]",
                   "name": "_excludedFromTotalSupply",
                   "type": "address[]"
@@ -12907,11 +12902,37 @@
               "inputs": [
                 {
                   "internalType": "uint256",
+                  "name": "_seigniorageExpansionFloorPercent",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setSeigniorageExpansionFloorPercent",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
                   "name": "_snowPriceCeiling",
                   "type": "uint256"
                 }
               ],
               "name": "setSnowPriceCeiling",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_snowPriceOne",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setSnowPriceOne",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -12950,19 +12971,6 @@
                   "type": "bool"
                 }
               ],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_taxOffice",
-                  "type": "address"
-                }
-              ],
-              "name": "setTaxOffice",
-              "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
             },
@@ -13076,7 +13084,7 @@
           ]
         },
         "UsdcOracle": {
-          "address": "0x2695D858b79b5c563aBb16ddEE7183D3cf7556b3",
+          "address": "0xa10FafF97AE5508e85012C0F63bBc008B9796D8a",
           "abi": [
             {
               "inputs": [
@@ -13256,7 +13264,7 @@
           ]
         },
         "WrappedRouter": {
-          "address": "0x141A17A70aDB3E73B85FA084C93d1C436B02CB81",
+          "address": "0xc5fC4b6FBA94C0eCb477124187B9f7ded54c7CC1",
           "abi": [
             {
               "inputs": [
@@ -13490,7 +13498,7 @@
           ]
         },
         "Zap": {
-          "address": "0xb2a983B243d8b1B1c965EDDbA3CB9acdE9FD2f49",
+          "address": "0xCeb348E82b3d352E8fBb9677751a16bC16Ba45B2",
           "abi": [
             {
               "inputs": [

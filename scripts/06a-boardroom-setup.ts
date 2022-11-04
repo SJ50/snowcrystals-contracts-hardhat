@@ -21,20 +21,20 @@ async function main() {
   console.log(`(tx: ${initializinTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 
-  console.log(`
-----------------------------------------------------`);
-  console.log("set Treasury as Boardroom operator...");
-  const setOperatorTransactionResponse = await BOARDROOM.setOperator(
-    TREASURY.address
-  );
-  await setOperatorTransactionResponse.wait(1);
-  console.log(`(tx: ${setOperatorTransactionResponse.hash})...`);
-  console.log("----------------------------------------------------");
+  //   console.log(`
+  // ----------------------------------------------------`);
+  //   console.log("set Treasury as Boardroom operator...");
+  //   const setOperatorTransactionResponse = await BOARDROOM.setOperator(
+  //     TREASURY.address
+  //   );
+  //   await setOperatorTransactionResponse.wait(1);
+  //   console.log(`(tx: ${setOperatorTransactionResponse.hash})...`);
+  //   console.log("----------------------------------------------------");
 
-  console.log(`
-----------------------------------------------------`);
-  console.log("Manually Approve and Deposit 1 $GLCR from DAO..");
-  console.log("----------------------------------------------------");
+  //   console.log(`
+  // ----------------------------------------------------`);
+  //   console.log("Manually Approve and Deposit 1 $GLCR from DAO..");
+  //   console.log("----------------------------------------------------");
 }
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
