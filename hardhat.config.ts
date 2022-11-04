@@ -1,7 +1,7 @@
 import { task, HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "dotenv/config";
-import { item } from "@1password/op-js";
+import { setGlobalFlags, item, whoami } from "@1password/op-js";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 import "@typechain/hardhat";
@@ -13,13 +13,19 @@ import "hardhat-deploy";
 import "./tasks/blocknumber";
 import "./tasks/treasury-allocateSeigniorage";
 
+setGlobalFlags({
+  account: "my.1password.com",
+});
+console.log(whoami);
 const CRONOSCAN_API_KEY: string = process.env.CRONOSCAN_API_KEY!;
 const CRONOSCAN_TESTNET_API_KEY: string =
   process.env.CRONOSCAN_TESTNET_API_KEY!;
 const DEPLOYER: string =
   item
     .get("Metamask")
-    .fields?.filter((i) => i.type === `CONCEALED` && i.label === `Deployer`)
+    .fields?.filter(
+      (i) => i.type === `CONCEALED` && i.label === `Deployer`
+    ) /*op://Private/Metamask/Section_6B38E8BA26DF4E418F522F734847C50C/Deployer*/
     ?.map((e) => e.value)
     ?.toString() || "";
 const COINMARKETCAP_API_KEY: string = process.env.COINMARKETCAP_API_KEY || "";

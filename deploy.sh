@@ -23,8 +23,8 @@ echo "network is $NETWORK"
 for f in deploy/*; do
     echo "running $f..."
     while true; do
-        tag=${f##*-}   ## remove largest matching string from the beginning
-        tag=${tag%%.*} ## remove largetst matching end part including matching string
+        tag=${f##*-}   ## means remove largest matching string from the beginning
+        tag=${tag%%.*} ## means remove largetst matching end part including matching string
         hh deploy --network $NETWORK --tags $tag
         if [ $? == 0 ]; then
             break
