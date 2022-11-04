@@ -842,7 +842,7 @@ contract Treasury is ContractGuard, ReentrancyGuard {
     }
 
     /** 
-    Snow token contract governance
+    token contract governance
     **/
 
     function setSnowTaxOffice(address _taxOffice) external onlyOperator {
