@@ -11,12 +11,12 @@ async function main() {
   const GLCR: Glcr = await ethers.getContract("Glcr", deployer);
 
   console.log(`
-----------------------------------------------------`);
-  console.log("setting $SNOW as taxed in ZAP..");
-  const setIsFeeOnTransferSnowTransactionResponse =
-    await ZAP.setIsFeeOnTransfer(SNOW.address);
-  await setIsFeeOnTransferSnowTransactionResponse.wait(1);
-  console.log(`(tx: ${setIsFeeOnTransferSnowTransactionResponse.hash})...`);
+  ----------------------------------------------------`);
+  console.log("setting $GLCR as taxed in ZAP..");
+  const setIsFeeOnTransferGlcrTransactionResponse =
+    await ZAP.setIsFeeOnTransfer(GLCR.address);
+  await setIsFeeOnTransferGlcrTransactionResponse.wait(1);
+  console.log(`(tx: ${setIsFeeOnTransferGlcrTransactionResponse.hash})...`);
   console.log("----------------------------------------------------");
 }
 // We recommend this pattern to be able to use async/await everywhere
